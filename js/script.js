@@ -3,47 +3,57 @@ var velT;
 var tamTelaW, tamTelaH;
 var jogo;
 var frames;
-var contBombas, painelContBombas, velB, tmpCriaBomba;
+var contBombas,
+  painelContBombas,
+  velB,
+  tmpCriaBomba,
+  tmpcontrolaBomba,
+  qtdBombas;
 var bombasTotal;
 var vidaPlaneta, barraPlaneta;
 var ie, isom;
 var telaMsg;
 
+
 function teclaDw() {
   var tecla = event.keyCode;
-  if (tecla == 38) {
-    // CIMA
-    diryJ = -1;
-  } else if (tecla == 40) {
-    diryJ = 1;
-    // BAIXO
-  } else if (tecla == 37) {
-    dirxJ = -1;
-    // ESQUERDA
-  } else if (tecla == 39) {
-    dirxJ = 1;
-    // DIREITA
+ 
+  console.log("PJX = "+pjx);
+  if (pjx > 0 && pjx < tamTelaW - 40 ) {
+    if (tecla == 38) {
+      // ATIRA
+      atira(pjx + 17, pjy);
+    } else if (tecla == 37) {
+      dirxJ = -1;
+      // ESQUERDA
+    } else if (tecla == 39) {
+      dirxJ = 1;
+      // DIREITA
+    }
+    document.removeEventListener("keydown",teclaDw);
   }
-  if (tecla == 32) {
-    //ESPAÇO
-    //TIRO
-    atira(pjx + 17, pjy);
-  }
+}
+
+function controlaJogador() {
+  pjx += dirxJ * velJ;
+  jog.style.left = pjx + "px";
 }
 
 function teclaUp() {
   var tecla = event.keyCode;
-  if (tecla == 38 || tecla == 40) {
-    diryJ = 0;
-  } else if (tecla == 39 || tecla == 37) {
+  if (tecla == 39) {
+    dirxJ = 0;
+  } else if (tecla == 37) {
     dirxJ = 0;
   }
+  document.addEventListener("keydown",teclaDw);
 }
 
 function criaBomba() {
-  if (jogo) {
+  if (jogo && qtdBombas < 5) {
     var y = 0;
-    var x = Math.random() * tamTelaW;
+    var x = Math.random() * tamTelaW - 24;
+
     var bomba = document.createElement("div");
     var att1 = document.createAttribute("class");
     var att2 = document.createAttribute("style");
@@ -53,6 +63,7 @@ function criaBomba() {
     bomba.setAttributeNode(att2);
     document.body.appendChild(bomba);
     contBombas--;
+    qtdBombas++;
   }
 }
 
@@ -61,14 +72,44 @@ function controlaBomba() {
   var tam = bombasTotal.length;
   for (var i = 0; i < tam; i++) {
     if (bombasTotal[i]) {
-      var pi = bombasTotal[i].offsetTop;
-      pi += velB;
-      bombasTotal[i].style.top = pi + "px";
-      if (pi > tamTelaH) {
-        vidaPlaneta -= 10;
-        criaExplossao(2, bombasTotal[i].offsetLeft, null);
+      var py = bombasTotal[i].offsetTop;
+      var px = bombasTotal[i].offsetLeft;
+      var mov;
+      mov = Math.floor(Math.random() * 2);
+      console.log("move " + mov);
+      if (mov == 1) {
+        //1 = Y
+        if (px - 24 <= 0) {
+          px += 50;
+        } else if (px >= tamTelaW) {
+          px -= 50;
+        } else {
+          mov = Math.floor(Math.random() * 2);
+          if (mov == 1) {
+            px += 50;
+          } else {
+            px -= 50;
+          }
+        }
+      } else {
+      }
 
+      py += 30;
+      bombasTotal[i].style.top = py + "px";
+      bombasTotal[i].style.left = px + "px";
+    }
+  }
+}
+
+function verificaPassagemBomba() {
+  bombasTotal = document.getElementsByClassName("bomba");
+  var tam = bombasTotal.length;
+  for (var i = 0; i < tam; i++) {
+    if (bombasTotal[i]) {
+      var py = bombasTotal[i].offsetTop;
+      if (py > tamTelaH) {
         bombasTotal[i].remove();
+        qtdBombas--;
       }
     }
   }
@@ -169,13 +210,7 @@ function criaExplossao(tipo, x, y) {
   document.getElementById("som" + isom).play();
   isom++;
   ie++;
-}
-
-function controlaJogador() {
-  pjy += diryJ * velJ;
-  pjx += dirxJ * velJ;
-  jog.style.top = pjy + "px";
-  jog.style.left = pjx + "px";
+  qtdBombas--;
 }
 
 function gerenciaGame() {
@@ -200,7 +235,8 @@ function gameLoop() {
     //funcoes de controle
     controlaJogador();
     controleTiros();
-    controlaBomba();
+    verificaPassagemBomba();
+    //controlaBomba();
   }
   gerenciaGame();
   frames = requestAnimationFrame(gameLoop);
@@ -216,15 +252,18 @@ function reinicia() {
   }
   telaMsg.style.display = "none";
   clearInterval(tmpCriaBomba);
+  clearInterval(tmpcontrolaBomba);
   cancelAnimationFrame(frames);
   vidaPlaneta = 300;
   pjx = tamTelaW / 2;
-  pjy = tamTelaH / 2;
+  pjy = tamTelaH - 80;
   jog.style.top = pjy + "px";
   jog.style.lft = pjx + "px";
   contBombas = 150;
+  qtdBombas = 0;
   jogo = true;
   tmpCriaBomba = setInterval(criaBomba, 1700);
+  tmpcontrolaBomba = setInterval(controlaBomba, 1000);
   gameLoop();
 }
 
@@ -235,21 +274,19 @@ function inicia() {
   tamTelaW = window.innerWidth;
 
   //Ini jogador
-  dirxJ = diryJ = 0;
+  dirxJ = 0;
   pjx = tamTelaW / 2;
-  pjy = tamTelaH / 2;
+
   velJ = velT = 5;
   jog = document.getElementById("navJog");
 
   jog.style.top = pjy + "px";
-  jog.style.left = pjx + "px";
+  jog.style.left = "50%";
 
   //controle de bombas
- 
-
+  qtdBombas = 0;
   contBombas = 150;
   velB = 3;
-  
 
   //controles do planeta
   vidaPlaneta = 300;
@@ -263,8 +300,6 @@ function inicia() {
   telaMsg.style.backgroundImage = "url('../img/intro.jpg')";
   telaMsg.style.display = "block";
   document.getElementById("btnJogar").addEventListener("click", reinicia);
-
-  
 }
 
 window.addEventListener("load", inicia);
