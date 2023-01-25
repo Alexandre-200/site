@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&family=Press+Start+2P&display=swap");
 *,
 *::after,
 *::before {
@@ -8,13 +8,37 @@
 }
 
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   background-color: rgb(97, 97, 97);
+}
+
+button {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 20px;
+  min-width: 100px;
+  text-transform: uppercase;
+  background-color: #000;
+  color: rgb(161, 211, 245);
+  transition: 0.5s;
+}
+button:hover {
+  cursor: pointer;
+  color: #000;
+  background-color: rgb(161, 211, 245);
+  border: 1px solid #000;
 }
 
 body {
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+#painel {
+  display: none;
 }
 
 .navJog {
@@ -24,27 +48,19 @@ body {
   position: absolute;
 }
 
-.telaMsg {
-  position: absolute;
-  margin-left: -25%;
-  top: 50px;
-  left: 50%;
-  width: 720px;
-  height: 621px;
-  display: none;
+#barraVida {
+  display: flex;
+  background-color: transparent;
 }
 
-#medidorPlaneta {
-  border: 2px solid #000;
-  width: 300px;
-  height: 20px;
-  background-color: #fff;
-}
-
-#barraPlaneta {
-  width: 296px;
-  height: 16px;
-  background-color: #55f;
+#c1,
+#c2,
+#c3,
+#c4,
+#c5 {
+  font-size: 2rem;
+  color: rgb(216, 74, 74);
+  margin-left: 10px;
 }
 
 .tiroJog {
@@ -57,8 +73,7 @@ body {
 
 .bomba {
   width: 24px;
-  height: 40px;
-  background-image: url("../../img/bomba.gif");
+  height: 24px;
   position: absolute;
 }
 
@@ -76,12 +91,55 @@ body {
 
 .telaMsg {
   position: absolute;
-  margin-left: -25%;
-  top: 50%;
-  left: 50%;
-  width: 720px;
-  height: 621px;
-  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(161, 211, 245);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.telaMsg .paragrafo {
+  width: 60%;
+  top: 20px;
+  font-size: 1.5rem;
+  line-height: 35px;
+  text-align: center;
+}
+.telaMsg .opcao {
+  width: 60%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+.telaMsg .opcao .jogo {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.telaMsg .opcao .jogo text {
+  margin-bottom: 10px;
+}
+.telaMsg .opcao .jogo div {
+  margin-bottom: 10px;
+}
+.telaMsg .opcao .jogo div text {
+  padding-left: 10px;
+}
+.telaMsg .opcao .site {
+  text-align: right;
+}
+.telaMsg .selecao {
+  width: 60%;
+  display: flex;
+}
+.telaMsg .selecao div {
+  width: 60%;
+  display: flex;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

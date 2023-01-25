@@ -3,21 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/styles.css" />
-    <script type="text/javascript" src="./js/script.js" defer ></script>
+    <script type="text/javascript" src="./js/script.js" defer></script>
+
+    <!-- font welsome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <title>Nave-Game</title>
+    <style>
+      @font-face {
+        font-family: "";
+        src: url("./fonts/fontGame.otf");
+      }
+    </style>
   </head>
   <body>
     <div id="painel">
-      Planeta
-      <div id="medidorPlaneta">
-        <div id="barraPlaneta"></div>
+      <div id="medidorVida">
+        <div id="barraVida">
+          <i class="fa-solid fa-heart" id="c1"></i>
+          <i class="fa-solid fa-heart" id="c2"></i>
+          <i class="fa-solid fa-heart" id="c3"></i>
+          <i class="fa-solid fa-heart" id="c4"></i>
+          <i class="fa-solid fa-heart" id="c5"></i>
+        </div>
       </div>
-      <div id="contBombas"></div>
     </div>
 
     <div id="navJog" class="navJog"></div>
     <div id="telaMsg" class="telaMsg">
-      <button id="btnJogar" class="btnJogar">Jogar</button>
+      <div class="paragrafo">
+        <p>
+          Bem vindo ao meu portfolio por favor selecione uma opiç~~ao abaixo
+        </p>
+      </div>
+      <div class="opcao">
+        <div class="jogo">
+          <text>Acessar com o jogo</text>
+          <div><i class="fa-solid fa-arrow-left"></i><text>esquerda</text></div>
+          <div><i class="fa-solid fa-arrow-right"></i><text>direita</text></div>
+          <div><i class="fa-solid fa-arrow-up"></i><text>tiro</text></div>
+        </div>
+        <div class="site">
+          <p>Acessar sem o jogo</p>
+        </div >
+      </div>
+      <div class="selecao">
+        <div>
+          <button id="btnJogar" class="btnJogo">Jogar</button>
+        </div>
+        <div>
+          <button id="btnJogar" class="btnSite">Site</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

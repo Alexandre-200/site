@@ -10,16 +10,41 @@ var contBombas,
   tmpcontrolaBomba,
   qtdBombas;
 var bombasTotal;
-var vidaPlaneta, barraPlaneta;
+var vida;
 var ie, isom;
 var telaMsg;
 
+function quantidadeVida(vida) {
+  var c1 = document.getElementById("c1");
+  var c2 = document.getElementById("c2");
+  var c3 = document.getElementById("c3");
+  var c4 = document.getElementById("c4");
+  var c5 = document.getElementById("c5");
+
+  if(vida == 4){
+    c5.style.color = "transparent";
+  }
+  else if(vida == 3){
+    c5.style.color = "transparent";
+    c4.style.color = "transparent";
+  }
+  else if(vida == 2){
+    c5.style.color = "transparent";
+    c4.style.color = "transparent";
+    c3.style.color = "transparent";
+  }
+  else if(vida == 1){
+    c5.style.color = "transparent";
+    c4.style.color = "transparent";
+    c3.style.color = "transparent";
+    c2.style.color = "transparent";
+  }
+}
 
 function teclaDw() {
   var tecla = event.keyCode;
- 
-  console.log("PJX = "+pjx);
-  if (pjx > 0 && pjx < tamTelaW - 40 ) {
+  pjx = jog.offsetLeft;
+  if (pjx > 0 && pjx < tamTelaW - 40) {
     if (tecla == 38) {
       // ATIRA
       atira(pjx + 17, pjy);
@@ -30,13 +55,17 @@ function teclaDw() {
       dirxJ = 1;
       // DIREITA
     }
-    document.removeEventListener("keydown",teclaDw);
+    pjx += dirxJ * velJ;
+    jog.style.left = pjx + "px";
+  } else {
+    if (pjx < 10) {
+      pjx = 5;
+      jog.style.left = pjx + "px";
+    } else if (pjx > tamTelaW - 45) {
+      pjx = tamTelaW - 45;
+      jog.style.left = pjx + "px";
+    }
   }
-}
-
-function controlaJogador() {
-  pjx += dirxJ * velJ;
-  jog.style.left = pjx + "px";
 }
 
 function teclaUp() {
@@ -46,10 +75,10 @@ function teclaUp() {
   } else if (tecla == 37) {
     dirxJ = 0;
   }
-  document.addEventListener("keydown",teclaDw);
 }
 
 function criaBomba() {
+  //telaMsg.style.backgroundImage = "url('../img/vitoria.jpg')";
   if (jogo && qtdBombas < 5) {
     var y = 0;
     var x = Math.random() * tamTelaW - 24;
@@ -58,7 +87,7 @@ function criaBomba() {
     var att1 = document.createAttribute("class");
     var att2 = document.createAttribute("style");
     att1.value = "bomba";
-    att2.value = "top:" + y + "px; left:" + x + "px;";
+    att2.value = "top:" + y + "px; left:" + x + "px;background-image: url('../../img/et1.png');";
     bomba.setAttributeNode(att1);
     bomba.setAttributeNode(att2);
     document.body.appendChild(bomba);
@@ -75,8 +104,8 @@ function controlaBomba() {
       var py = bombasTotal[i].offsetTop;
       var px = bombasTotal[i].offsetLeft;
       var mov;
-      mov = Math.floor(Math.random() * 2);
-      console.log("move " + mov);
+      mov = Math.floor(Math.random() * 1);
+
       if (mov == 1) {
         //1 = Y
         if (px - 24 <= 0) {
@@ -153,11 +182,7 @@ function colisaoTiroBomba(tiro) {
         tiro.offsetLeft <= bombasTotal[i].offsetLeft + 24 && //esquerda tiro com direita bomba
         tiro.offsetLeft + 6 >= bombasTotal[i].offsetLeft //direita tiro com esquerda bomba
       ) {
-        criaExplossao(
-          1,
-          bombasTotal[i].offsetLeft - 25,
-          bombasTotal[i].offsetTop
-        );
+        criaExplossao(bombasTotal[i].offsetLeft - 25, bombasTotal[i].offsetTop);
         bombasTotal[i].remove();
         tiro.remove();
       }
@@ -165,11 +190,33 @@ function colisaoTiroBomba(tiro) {
   }
 }
 
-function criaExplossao(tipo, x, y) {
-  //tipo 1=AR, 2=TERRA
-  if (document.getElementById("explosao" + ie - 5)) {
-    document.getElementById("explosao" + ie - 5).removeAttributeNode();
+function colisaoNaveBomba() {
+  var tam = bombasTotal.length;
+  for (var i = 0; i < tam; i++) {
+    if (bombasTotal[i]) {
+      if (
+        jog.offsetTop <= bombasTotal[i].offsetTop + 40 && //cima tiro com baixo bomba
+        jog.offsetTop + 55 >= bombasTotal[i].offsetTop && //baixo tiro com cima bomba
+        jog.offsetLeft <= bombasTotal[i].offsetLeft + 24 && //esquerda tiro com direita bomba
+        //jog.offsetLeft <= bombasTotal[i].offsetLeft + 45 &&
+        jog.offsetLeft + 55 >= bombasTotal[i].offsetLeft //direita tiro com esquerda bomba
+      ) {
+        criaExplossao(bombasTotal[i].offsetLeft - 25, bombasTotal[i].offsetTop);
+        bombasTotal[i].remove();
+        vida--;
+        quantidadeVida(vida);
+      }
+    }
   }
+}
+
+function criaExplossao(x, y) {
+  //tipo 1=AR, 2=TERRA
+
+  if (document.getElementById("explosao" + (ie - 5))) {
+    document.getElementById("explosao" + (ie - 5)).remove();
+  }
+
   var explosao = document.createElement("div");
   var img = document.createElement("img");
   var som = document.createElement("audio");
@@ -179,20 +226,14 @@ function criaExplossao(tipo, x, y) {
   var att3 = document.createAttribute("id");
 
   var att4 = document.createAttribute("src");
-
   var att5 = document.createAttribute("src");
   var att6 = document.createAttribute("id");
 
+  att1.value = "explosaoAr";
+  att2.value = "top:" + y + "px;left:" + x + "px;";
   att3.value = "explosao" + ie;
-  if (tipo == 1) {
-    att1.value = "explosaoAr";
-    att2.value = "top:" + y + "px;left:" + x + "px";
-    att4.value = "../img/explosao_ar.gif?" + new Date();
-  } else {
-    att1.value = "explosaoChao";
-    att2.value = "top:" + (tamTelaH - 57) + "px;left:" + (x - 17) + "px";
-    att4.value = "../img/explosao_chao.gif?" + new Date();
-  }
+  att4.value = "../img/explosao_ar.gif?" + new Date();
+
   att5.value = "../img/exp1.mp3?" + new Date();
   att6.value = "som" + isom;
 
@@ -208,13 +249,13 @@ function criaExplossao(tipo, x, y) {
 
   document.body.appendChild(explosao);
   document.getElementById("som" + isom).play();
-  isom++;
+
   ie++;
+  isom++;
   qtdBombas--;
 }
 
 function gerenciaGame() {
-  barraPlaneta.style.width = vidaPlaneta + "px";
   if (contBombas <= 0) {
     jogo = false;
     clearInterval(tmpCriaBomba);
@@ -233,9 +274,10 @@ function gerenciaGame() {
 function gameLoop() {
   if (jogo) {
     //funcoes de controle
-    controlaJogador();
+    //controlaJogador();
     controleTiros();
     verificaPassagemBomba();
+    colisaoNaveBomba();
     //controlaBomba();
   }
   gerenciaGame();
@@ -261,6 +303,7 @@ function reinicia() {
   jog.style.lft = pjx + "px";
   contBombas = 150;
   qtdBombas = 0;
+  vida = 5;
   jogo = true;
   tmpCriaBomba = setInterval(criaBomba, 1700);
   tmpcontrolaBomba = setInterval(controlaBomba, 1000);
@@ -289,16 +332,15 @@ function inicia() {
   velB = 3;
 
   //controles do planeta
-  vidaPlaneta = 300;
-  barraPlaneta = document.getElementById("barraPlaneta");
-  barraPlaneta.style.width = vidaPlaneta + "px";
-  //controle explsao
-  ie = isom = 0;
 
+  //controle explsao
+  ie = 0;
+  isom = 0;
+  vida = 5;
   //telas
   telaMsg = document.getElementById("telaMsg");
-  telaMsg.style.backgroundImage = "url('../img/intro.jpg')";
-  telaMsg.style.display = "block";
+  
+  //telaMsg.style.display = "block";
   document.getElementById("btnJogar").addEventListener("click", reinicia);
 }
 

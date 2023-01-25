@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&family=Press+Start+2P&display=swap");
 *,
 *::after,
 *::before {
@@ -7,7 +7,29 @@
   box-sizing: border-box;
 }
 
-body{
-    font-family: "Ubuntu", sans-serif;
-    background-color: $gray-100;
+body {
+  font-family: "Press Start 2P", sans-serif;
+  background-color: $gray-100;
+}
+
+button {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 20px;
+  min-width: 100px;
+  text-transform: uppercase;
+  
+  background-color: $black;
+  color: rgb(161, 211, 245);
+  transition: 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    color: $black;
+    background-color: rgb(161, 211, 245);
+    border: 1px solid $black;
+  }
 }

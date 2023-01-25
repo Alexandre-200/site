@@ -3,6 +3,10 @@ body {
   overflow-y: hidden;
 }
 
+#painel {
+  display: none;
+}
+
 .navJog {
   width: 40px;
   height: 40px;
@@ -10,27 +14,19 @@ body {
   position: absolute;
 }
 
-.telaMsg {
-  position: absolute;
-  margin-left: -25%;
-  top: 50px;
-  left: 50%;
-  width: 720px;
-  height: 621px;
-  display: none;
+#barraVida {
+  display: flex;
+  background-color: transparent;
 }
 
-#medidorPlaneta {
-  border: 2px solid #000;
-  width: 300px;
-  height: 20px;
-  background-color: #fff;
-}
-
-#barraPlaneta {
-  width: 296px;
-  height: 16px;
-  background-color: #55f;
+#c1,
+#c2,
+#c3,
+#c4,
+#c5 {
+  font-size: 2rem;
+  color: rgb(216, 74, 74);
+  margin-left: 10px;
 }
 
 .tiroJog {
@@ -43,8 +39,8 @@ body {
 
 .bomba {
   width: 24px;
-  height: 40px;
-  background-image: url("../../img/bomba.gif");
+  height: 24px;
+  //background-image: url("../../img/et1.png");
   position: absolute;
 }
 
@@ -60,12 +56,63 @@ body {
   position: absolute;
 }
 
-.telaMsg{
-    position: absolute;
-    margin-left: -25%;
-    top: 50%;
-    left: 50%;
-    width: 720px;
-    height: 621px;
-    display: none;
+.telaMsg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(161, 211, 245);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .paragrafo {
+    width: 60%;
+    top: 20px;
+    font-size: 1.5rem;
+    line-height: 35px;
+    text-align: center;
+  }
+
+  .opcao {
+    width: 60%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+
+    .jogo {
+      display: flex;
+      justify-content: center;
+     // align-items: left;
+      padding: 10px;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      //background-color: green;
+      text {
+        margin-bottom: 10px;
+      }
+      div {
+        margin-bottom: 10px;
+        text {
+          padding-left: 10px;
+        }
+      }
+    }
+
+    .site{
+      text-align: right;
+    }
+  }
+  .selecao {
+    width: 60%;
+    display: flex;
+   // justify-content: center;
+
+    div {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+    }
+  }
 }
