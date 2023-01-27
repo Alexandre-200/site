@@ -14,38 +14,19 @@ var vida;
 var ie, isom;
 var telaMsg;
 
+
+
 function quantidadeVida(vida) {
   var c1 = document.getElementById("c1");
-  var c2 = document.getElementById("c2");
-  var c3 = document.getElementById("c3");
-  var c4 = document.getElementById("c4");
-  var c5 = document.getElementById("c5");
-
-  if(vida == 4){
-    c5.style.color = "transparent";
-  }
-  else if(vida == 3){
-    c5.style.color = "transparent";
-    c4.style.color = "transparent";
-  }
-  else if(vida == 2){
-    c5.style.color = "transparent";
-    c4.style.color = "transparent";
-    c3.style.color = "transparent";
-  }
-  else if(vida == 1){
-    c5.style.color = "transparent";
-    c4.style.color = "transparent";
-    c3.style.color = "transparent";
-    c2.style.color = "transparent";
-  }
+  var qv = document.getElementById("qtdVidas");
+  qv.innerText = vida;
 }
 
 function teclaDw() {
   var tecla = event.keyCode;
   pjx = jog.offsetLeft;
   if (pjx > 0 && pjx < tamTelaW - 40) {
-    if (tecla == 38) {
+    if (tecla == 65) {
       // ATIRA
       atira(pjx + 17, pjy);
     } else if (tecla == 37) {
@@ -87,7 +68,12 @@ function criaBomba() {
     var att1 = document.createAttribute("class");
     var att2 = document.createAttribute("style");
     att1.value = "bomba";
-    att2.value = "top:" + y + "px; left:" + x + "px;background-image: url('../../img/et1.png');";
+    att2.value =
+      "top:" +
+      y +
+      "px; left:" +
+      x +
+      "px;background-image: url('../../img/et1.png');";
     bomba.setAttributeNode(att1);
     bomba.setAttributeNode(att2);
     document.body.appendChild(bomba);
@@ -292,15 +278,15 @@ function reinicia() {
       bombasTotal[i].remove();
     }
   }
-  
+
   clearInterval(tmpCriaBomba);
   clearInterval(tmpcontrolaBomba);
   cancelAnimationFrame(frames);
   vidaPlaneta = 300;
   pjx = tamTelaW / 2;
-  pjy = tamTelaH - 80;
-  jog.style.top = pjy + "px";
-  jog.style.lft = pjx + "px";
+  pjy = tamTelaH - 95;
+  //jog.style.top = pjy + "px";
+  //jog.style.left = pjx + "px";
   contBombas = 150;
   qtdBombas = 0;
   vida = 5;
@@ -323,8 +309,8 @@ function inicia() {
   velJ = velT = 5;
   jog = document.getElementById("navJog");
 
-  jog.style.top = pjy + "px";
-  jog.style.left = "50%";
+  //jog.style.top = pjy + "px";
+ // jog.style.left = "50%";
 
   //controle de bombas
   qtdBombas = 0;
@@ -347,3 +333,13 @@ function inicia() {
 window.addEventListener("load", inicia);
 document.addEventListener("keydown", teclaDw);
 document.addEventListener("keyup", teclaUp);
+
+window.addEventListener('scroll', function() {
+  let doc = document.documentElement;
+  let elem = document.getElementById('scrool')
+  let value = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight))
+  elem.innerHTML = value + '%'
+  if(value <= 5){
+    $(window).scrollTop(0);
+  }
+})
