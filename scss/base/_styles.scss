@@ -1,7 +1,11 @@
-body {
-  overflow-x: hidden;
+@import "../base/base-mixin";
 
+.body-game {
+  overflow-x: hidden;
+  width: 100vw;
   height: 250vh;
+  display: flex;
+  justify-content: center;
 }
 
 .telaMsg {
@@ -160,52 +164,115 @@ body {
 }
 
 .main {
-  min-width: 900px;
+  height: 100%;
+  width: 100%;
+  max-width: 1120px;
   display: flex;
-  position: relative;
 
-  .quadro-1 {
-    width: 250px;
-    height: 300px;
-    background-color: green;
-    margin-left: 10%;
-    margin-top: 150%;
-    position: absolute;
+  flex-direction: column;
+  margin: 20px;
+
+  .arena {
+    width: 100%;
+    height: 50%;
+    background-color: grey;
   }
+  .informacoes {
+    height: 50%;
+    .sobre {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
 
-  .quadro-2 {
-    width: 250px;
-    height: 300px;
-    background-color: blue;
-    margin-left: 70%;
-    margin-top: 140%;
-    position: absolute;
-  }
+      p {
+        margin-top: 20px;
+        max-width: 400px;
+        line-height: 20px;
+        text-align: center;
+        color: rgb(161, 211, 245);
+      }
 
-  .quadro-3 {
-    width: 250px;
-    height: 300px;
-    background-color: red;
-    margin-left: 11%;
-    margin-top: 120%;
-    position: absolute;
-  }
+      .quadro-1 {
+        width: 300px;
+        height: 350px;
+        border: 3px solid rgb(161, 211, 245);
+        background-color: red;
+      }
 
-  .quadro-4 {
-    width: 250px;
-    height: 300px;
-    background-color: yellow;
-    margin-left: 70%;
-    margin-top: 110%;
-    position: absolute;
-  }
+      .quadro-2 {
+        width: 300px;
+        height: 350px;
+        border: 3px solid rgb(161, 211, 245);
+        background-color: blue;
+      }
+    }
 
-  .quadro-5 {
-    width: 250px;
-    height: 300px;
-    background-color: purple;
-    margin-left: 10%;
-    margin-top: 80%;
-    position: absolute;
+    .hcj {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .quadro-3 {
+        width: 300px;
+        height: 350px;
+        border: 3px solid rgb(161, 211, 245);
+        background-color: green;
+      }
+
+      .quadro-4 {
+        width: 300px;
+        height: 350px;
+        border: 3px solid rgb(161, 211, 245);
+        background-color: yellow;
+      }
+    }
+
+    .react {
+      margin-top: 20px;
+      margin-bottom: 50px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      p {
+        margin-top: 20px;
+        color: rgb(161, 211, 245);
+      }
+
+      .quadro-5 {
+        width: 300px;
+        height: 350px;
+        border: 3px solid rgb(161, 211, 245);
+        line-height: 20px;
+        padding: 9px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .quadro-6 {
+        width: 300px;
+        height: 350px;
+        border: 3px solid rgb(161, 211, 245);
+        line-height: 20px;
+        padding: 9px;
+        text-align: center;
+      }
+    }
   }
 }

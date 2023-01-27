@@ -1,0 +1,22 @@
+@mixin tablet {
+  @media (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin quadro {
+  width: 250px;
+  height: 300px;
+  border: 3px solid rgb(161, 211, 245);
+
+  position: absolute;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}

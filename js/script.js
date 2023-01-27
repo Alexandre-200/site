@@ -339,7 +339,7 @@ window.addEventListener('scroll', function() {
   let elem = document.getElementById('scrool')
   let value = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight))
   elem.innerHTML = value + '%'
-  if(value <= 5){
-    $(window).scrollTop(0);
+  if(value <= 50){
+    window.scrollTop(0);
   }
 })
