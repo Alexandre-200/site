@@ -181,31 +181,58 @@
     height: 50%;
     .sobre {
       width: 100%;
+      margin-top: 20px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
 
-      p {
-        margin-top: 20px;
-        max-width: 400px;
-        line-height: 20px;
-        text-align: center;
-        color: rgb(161, 211, 245);
+      @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .ttl-quadro {
+          order: 3;
+        }
+        .quadro-3 {
+          order: 2;
+          margin-top: 15px;
+        }
+
+        .quadro-4{
+          margin-top: 10px;
+        }
       }
 
       .quadro-1 {
         width: 300px;
         height: 350px;
         border: 3px solid rgb(161, 211, 245);
-        background-color: red;
+        background-color: green;
+      }
+
+      .ttl-quadro {
+        width: 300px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 0;
+        text-align: center;
+        margin-left: 5px;
+        margin-right: 5px;
+        color: rgb(161, 211, 245);
+        
       }
 
       .quadro-2 {
         width: 300px;
         height: 350px;
         border: 3px solid rgb(161, 211, 245);
-        background-color: blue;
+        background-color: yellow;
       }
+
+      
     }
 
     .hcj {
@@ -219,6 +246,18 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .ttl-quadro {
+          order: 3;
+        }
+        .quadro-3 {
+          order: 2;
+          margin-top: 15px;
+        }
+
+        .quadro-4{
+          margin-top: 10px;
+        }
       }
 
       .quadro-3 {
@@ -226,6 +265,20 @@
         height: 350px;
         border: 3px solid rgb(161, 211, 245);
         background-color: green;
+      }
+
+      .ttl-quadro {
+        width: 300px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 0;
+        text-align: center;
+        margin-left: 5px;
+        margin-right: 5px;
+        color: rgb(161, 211, 245);
+        
       }
 
       .quadro-4 {
@@ -248,11 +301,18 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-      }
 
-      p {
-        margin-top: 20px;
-        color: rgb(161, 211, 245);
+        .ttl-quadro {
+          order: 3;
+        }
+        .quadro-5 {
+          order: 2;
+          margin-top: 15px;
+        }
+
+        .quadro-6{
+          margin-top: 10px;
+        }
       }
 
       .quadro-5 {
@@ -261,8 +321,21 @@
         border: 3px solid rgb(161, 211, 245);
         line-height: 20px;
         padding: 9px;
-        justify-content: center;
         text-align: center;
+      }
+
+      .ttl-quadro {
+        width: 300px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 0;
+        text-align: center;
+        margin-left: 5px;
+        margin-right: 5px;
+        color: rgb(161, 211, 245);
+        
       }
 
       .quadro-6 {

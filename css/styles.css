@@ -184,28 +184,51 @@ a {
 }
 .main .informacoes .sobre {
   width: 100%;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.main .informacoes .sobre p {
-  margin-top: 20px;
-  max-width: 400px;
-  line-height: 20px;
-  text-align: center;
-  color: rgb(161, 211, 245);
+@media (max-width: 800px) {
+  .main .informacoes .sobre {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .main .informacoes .sobre .ttl-quadro {
+    order: 3;
+  }
+  .main .informacoes .sobre .quadro-3 {
+    order: 2;
+    margin-top: 15px;
+  }
+  .main .informacoes .sobre .quadro-4 {
+    margin-top: 10px;
+  }
 }
 .main .informacoes .sobre .quadro-1 {
   width: 300px;
   height: 350px;
   border: 3px solid rgb(161, 211, 245);
-  background-color: red;
+  background-color: green;
+}
+.main .informacoes .sobre .ttl-quadro {
+  width: 300px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: rgb(161, 211, 245);
 }
 .main .informacoes .sobre .quadro-2 {
   width: 300px;
   height: 350px;
   border: 3px solid rgb(161, 211, 245);
-  background-color: blue;
+  background-color: yellow;
 }
 .main .informacoes .hcj {
   width: 100%;
@@ -214,11 +237,21 @@ a {
   flex-direction: row;
   justify-content: space-between;
 }
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .main .informacoes .hcj {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .main .informacoes .hcj .ttl-quadro {
+    order: 3;
+  }
+  .main .informacoes .hcj .quadro-3 {
+    order: 2;
+    margin-top: 15px;
+  }
+  .main .informacoes .hcj .quadro-4 {
+    margin-top: 10px;
   }
 }
 .main .informacoes .hcj .quadro-3 {
@@ -226,6 +259,18 @@ a {
   height: 350px;
   border: 3px solid rgb(161, 211, 245);
   background-color: green;
+}
+.main .informacoes .hcj .ttl-quadro {
+  width: 300px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: rgb(161, 211, 245);
 }
 .main .informacoes .hcj .quadro-4 {
   width: 300px;
@@ -241,16 +286,22 @@ a {
   flex-direction: row;
   justify-content: space-between;
 }
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .main .informacoes .react {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-}
-.main .informacoes .react p {
-  margin-top: 20px;
-  color: rgb(161, 211, 245);
+  .main .informacoes .react .ttl-quadro {
+    order: 3;
+  }
+  .main .informacoes .react .quadro-5 {
+    order: 2;
+    margin-top: 15px;
+  }
+  .main .informacoes .react .quadro-6 {
+    margin-top: 10px;
+  }
 }
 .main .informacoes .react .quadro-5 {
   width: 300px;
@@ -258,8 +309,19 @@ a {
   border: 3px solid rgb(161, 211, 245);
   line-height: 20px;
   padding: 9px;
-  justify-content: center;
   text-align: center;
+}
+.main .informacoes .react .ttl-quadro {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: rgb(161, 211, 245);
 }
 .main .informacoes .react .quadro-6 {
   width: 300px;
