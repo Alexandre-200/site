@@ -292,7 +292,7 @@ function reinicia() {
       bombasTotal[i].remove();
     }
   }
-  telaMsg.style.display = "none";
+  
   clearInterval(tmpCriaBomba);
   clearInterval(tmpcontrolaBomba);
   cancelAnimationFrame(frames);
@@ -339,9 +339,9 @@ function inicia() {
   vida = 5;
   //telas
   telaMsg = document.getElementById("telaMsg");
-  
+  reinicia();
   //telaMsg.style.display = "block";
-  document.getElementById("btnJogar").addEventListener("click", reinicia);
+  //document.getElementById("btnJogar").addEventListener("click", reinicia);
 }
 
 window.addEventListener("load", inicia);

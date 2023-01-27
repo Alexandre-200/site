@@ -12,24 +12,6 @@ body {
   background-color: $gray-100;
 }
 
-button {
-  padding: 5px;
-  border: none;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: 700;
-  margin-top: 20px;
-  min-width: 100px;
-  text-transform: uppercase;
-  
-  background-color: $black;
-  color: rgb(161, 211, 245);
-  transition: 0.5s;
-
-  &:hover {
-    cursor: pointer;
-    color: $black;
-    background-color: rgb(161, 211, 245);
-    border: 1px solid $black;
-  }
+a {
+  text-decoration: none;
 }
