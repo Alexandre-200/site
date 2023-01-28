@@ -3,15 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/menu.css" />
     <script type="text/javascript" src="./js/script.js" defer></script>
 
     <!-- font welsome -->
     <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
 
     <title>Nave-Game</title>
@@ -83,7 +81,9 @@
             <div class="container-quadro">
               <div class="img"></div>
               <div class="link">
-                <a target="_blank" href="https://alexandre-200.github.io/Agency/"
+                <a
+                  target="_blank"
+                  href="https://alexandre-200.github.io/Agency/"
                   >Visitar</a
                 >
               </div>
@@ -120,13 +120,45 @@
     <footer id="footer">
       <div id="footerContainer">
         <div id="barraVida">
-          <i class="fa-solid fa-heart" id="c1"></i>
+          <i class='bx bxs-heart' id="heart" style="font-size:45px;"></i>
           <label id="qtdVidas">5</label>
         </div>
+        <div class="menu_content">
+          <div
+            class="item floating_item"
+            style="background-color: #0081cf; z-index: 1; rotate:45deg;"
+          >
+            <i class="bx bx-x"></i>
+          </div>
+          <div class="options">
+            <div class="item" style="background-color: #6e5494">
+              <a
+                target="_blank"
+                href="https://github.com/Alexandre-200"
+                class="link_git"
+              >
+                <i class="bx bxl-github"> </i
+              ></a>
+            </div>
+            <div class="item" style="background-color: #0081cf">
+              <a
+                target="_blank"
+                href="https://github.com/Alexandre-200"
+                class="link_link"
+              >
+                <i class="bx bxl-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <p id="scrool">barra</p>
+      
     </footer>
 
     <div id="navJog" class="navJog"></div>
+    <script>
+      const menu = document.querySelector(".floating_item");
+      menu.onclick = () => menu.classList.toggle("active");
+    </script>
   </body>
 </html>

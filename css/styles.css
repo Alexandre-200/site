@@ -100,11 +100,7 @@ a {
   background-color: transparent;
 }
 
-#c1,
-#c2,
-#c3,
-#c4,
-#c5 {
+#heart {
   font-size: 2rem;
   color: rgb(246, 8, 8);
   margin-left: 10px;
@@ -137,34 +133,76 @@ a {
 }
 
 #footer {
-  width: 100vw;
+  width: 90%;
   height: 50px;
-  background-color: rgb(161, 211, 245);
-  display: flex;
-  justify-content: center;
+  background-color: white;
   z-index: 1;
   position: fixed;
   bottom: 0px;
 }
 #footer #footerContainer {
-  min-width: 1120px;
   height: 50px;
-  background-color: rgb(161, 211, 245);
+  background-color: white;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 #footer #footerContainer #barraVida {
   position: relative;
+  margin-right: 50px;
 }
-#footer #footerContainer #barraVida #c1 {
+#footer #footerContainer #barraVida #heart {
   position: absolute;
-  top: -15px;
+  font-size: 45px;
+  top: -22px;
 }
 #footer #footerContainer #barraVida #qtdVidas {
   position: absolute;
-  color: rgb(161, 211, 245);
-  top: -7px;
-  left: 19px;
+  color: white;
+  top: -8px;
+  left: 25px;
+}
+#footer #footerContainer .menu_content {
+  width: 30px;
+  height: 40px;
+  position: relative;
+  margin-left: 50px;
+}
+#footer #footerContainer .menu_content .item {
+  border-radius: 50px;
+  color: white;
+  padding: 5px;
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+#footer #footerContainer .menu_content i {
+  font-size: 35px;
+}
+#footer #footerContainer .menu_content .link_git,
+#footer #footerContainer .menu_content .link_link {
+  text-decoration: none;
+  color: white;
+}
+#footer #footerContainer .menu_content .link_git:hover {
+  color: purple;
+}
+#footer #footerContainer .menu_content .link_link:hover {
+  color: blue;
+}
+#footer #footerContainer .menu_content .active {
+  transform: rotate(45deg);
+}
+#footer #footerContainer .menu_content .active ~ .options .item:hover {
+  scale: 1.1;
+  transition: scale 0.3s;
+}
+#footer #footerContainer .menu_content .active ~ .options .item:nth-child(1) {
+  transform: translate(-4.5rem, -2.5rem);
+}
+#footer #footerContainer .menu_content .active ~ .options .item:nth-child(2) {
+  transform: translate(0, -5.5rem);
+  transition-delay: 0.1s;
 }
 
 .main {
