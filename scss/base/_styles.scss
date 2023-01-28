@@ -156,6 +156,7 @@
 
       #qtdVidas {
         position: absolute;
+        color: rgb(161, 211, 245);
         top: -7px;
         left: 19px;
       }
@@ -164,24 +165,26 @@
 }
 
 .main {
-  height: 100%;
+  height: 96%;
   width: 100%;
   max-width: 1120px;
   display: flex;
 
   flex-direction: column;
-  margin: 20px;
+  margin: 10px;
 
   .arena {
     width: 100%;
-    height: 50%;
-    background-color: grey;
+    height: 48%;
+    //background-color: red;
   }
+
   .informacoes {
-    height: 50%;
-    .sobre {
+    width: 100%;
+    height: 48%;
+
+    .react {
       width: 100%;
-      margin-top: 20px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -191,15 +194,7 @@
         justify-content: center;
         align-items: center;
 
-        .ttl-quadro {
-          order: 3;
-        }
-        .quadro-3 {
-          order: 2;
-          margin-top: 15px;
-        }
-
-        .quadro-4{
+        .quadro-2 {
           margin-top: 10px;
         }
       }
@@ -207,37 +202,19 @@
       .quadro-1 {
         width: 300px;
         height: 350px;
-        border: 3px solid rgb(161, 211, 245);
-        background-color: green;
-      }
-
-      .ttl-quadro {
-        width: 300px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        bottom: 0;
-        text-align: center;
-        margin-left: 5px;
-        margin-right: 5px;
-        color: rgb(161, 211, 245);
-        
+        border: 3px solid black;
       }
 
       .quadro-2 {
         width: 300px;
         height: 350px;
-        border: 3px solid rgb(161, 211, 245);
-        background-color: yellow;
+        border: 3px solid black;
       }
-
-      
     }
 
     .hcj {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -252,19 +229,45 @@
         }
         .quadro-3 {
           order: 2;
-          margin-top: 15px;
+          margin-top: 10px;
         }
 
-        .quadro-4{
-          margin-top: 10px;
+        .quadro-4 {
         }
       }
 
       .quadro-3 {
         width: 300px;
         height: 350px;
-        border: 3px solid rgb(161, 211, 245);
-        background-color: green;
+        border: 3px solid black;
+        position: relative;
+       
+        cursor: pointer;
+
+        p{
+          position: absolute;
+          color: red;
+        }
+
+        &:hover{
+          color: green;
+        }
+
+
+
+        .img {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background-image: url("../img/Agency.png");
+          background-size: cover;
+          background-position: center;
+          transition: 0.6s;
+
+          &:hover {
+            opacity: 0;
+          }
+        }
       }
 
       .ttl-quadro {
@@ -275,24 +278,21 @@
         justify-content: center;
         bottom: 0;
         text-align: center;
-        margin-left: 5px;
-        margin-right: 5px;
-        color: rgb(161, 211, 245);
-        
+        //margin-left: 5px;
+        //margin-right: 5px;
+        color: black;
       }
 
       .quadro-4 {
         width: 300px;
         height: 350px;
-        border: 3px solid rgb(161, 211, 245);
-        background-color: yellow;
+        border: 3px solid black;
       }
     }
 
-    .react {
-      margin-top: 20px;
-      margin-bottom: 50px;
-      width: 100%;
+    .sobre {
+      margin-bottom: 20px;
+      margin-top: 10px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -301,6 +301,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        bottom: 10px;
 
         .ttl-quadro {
           order: 3;
@@ -310,7 +311,7 @@
           margin-top: 15px;
         }
 
-        .quadro-6{
+        .quadro-6 {
           margin-top: 10px;
         }
       }
@@ -318,7 +319,7 @@
       .quadro-5 {
         width: 300px;
         height: 350px;
-        border: 3px solid rgb(161, 211, 245);
+        border: 3px solid black;
         line-height: 20px;
         padding: 9px;
         text-align: center;
@@ -330,18 +331,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        bottom: 0;
+
         text-align: center;
-        margin-left: 5px;
-        margin-right: 5px;
-        color: rgb(161, 211, 245);
-        
+        //margin-left: 5px;
+        //margin-right: 5px;
+        color: black;
       }
 
       .quadro-6 {
         width: 300px;
         height: 350px;
-        border: 3px solid rgb(161, 211, 245);
+        border: 3px solid black;
         line-height: 20px;
         padding: 9px;
         text-align: center;

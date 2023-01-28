@@ -162,77 +162,56 @@ a {
 }
 #footer #footerContainer #barraVida #qtdVidas {
   position: absolute;
+  color: rgb(161, 211, 245);
   top: -7px;
   left: 19px;
 }
 
 .main {
-  height: 100%;
+  height: 96%;
   width: 100%;
   max-width: 1120px;
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 10px;
 }
 .main .arena {
   width: 100%;
-  height: 50%;
-  background-color: grey;
+  height: 48%;
 }
 .main .informacoes {
-  height: 50%;
-}
-.main .informacoes .sobre {
   width: 100%;
-  margin-top: 20px;
+  height: 48%;
+}
+.main .informacoes .react {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 @media (max-width: 800px) {
-  .main .informacoes .sobre {
+  .main .informacoes .react {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .main .informacoes .sobre .ttl-quadro {
-    order: 3;
-  }
-  .main .informacoes .sobre .quadro-3 {
-    order: 2;
-    margin-top: 15px;
-  }
-  .main .informacoes .sobre .quadro-4 {
+  .main .informacoes .react .quadro-2 {
     margin-top: 10px;
   }
 }
-.main .informacoes .sobre .quadro-1 {
+.main .informacoes .react .quadro-1 {
   width: 300px;
   height: 350px;
-  border: 3px solid rgb(161, 211, 245);
-  background-color: green;
+  border: 3px solid black;
 }
-.main .informacoes .sobre .ttl-quadro {
-  width: 300px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 0;
-  text-align: center;
-  margin-left: 5px;
-  margin-right: 5px;
-  color: rgb(161, 211, 245);
-}
-.main .informacoes .sobre .quadro-2 {
+.main .informacoes .react .quadro-2 {
   width: 300px;
   height: 350px;
-  border: 3px solid rgb(161, 211, 245);
-  background-color: yellow;
+  border: 3px solid black;
 }
 .main .informacoes .hcj {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -248,17 +227,34 @@ a {
   }
   .main .informacoes .hcj .quadro-3 {
     order: 2;
-    margin-top: 15px;
-  }
-  .main .informacoes .hcj .quadro-4 {
     margin-top: 10px;
   }
 }
 .main .informacoes .hcj .quadro-3 {
   width: 300px;
   height: 350px;
-  border: 3px solid rgb(161, 211, 245);
-  background-color: green;
+  border: 3px solid black;
+  position: relative;
+  cursor: pointer;
+}
+.main .informacoes .hcj .quadro-3 p {
+  position: absolute;
+  color: red;
+}
+.main .informacoes .hcj .quadro-3:hover {
+  color: green;
+}
+.main .informacoes .hcj .quadro-3 .img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url("../img/Agency.png");
+  background-size: cover;
+  background-position: center;
+  transition: 0.6s;
+}
+.main .informacoes .hcj .quadro-3 .img:hover {
+  opacity: 0;
 }
 .main .informacoes .hcj .ttl-quadro {
   width: 300px;
@@ -268,65 +264,59 @@ a {
   justify-content: center;
   bottom: 0;
   text-align: center;
-  margin-left: 5px;
-  margin-right: 5px;
-  color: rgb(161, 211, 245);
+  color: black;
 }
 .main .informacoes .hcj .quadro-4 {
   width: 300px;
   height: 350px;
-  border: 3px solid rgb(161, 211, 245);
-  background-color: yellow;
+  border: 3px solid black;
 }
-.main .informacoes .react {
-  margin-top: 20px;
-  margin-bottom: 50px;
-  width: 100%;
+.main .informacoes .sobre {
+  margin-bottom: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 @media (max-width: 800px) {
-  .main .informacoes .react {
+  .main .informacoes .sobre {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    bottom: 10px;
   }
-  .main .informacoes .react .ttl-quadro {
+  .main .informacoes .sobre .ttl-quadro {
     order: 3;
   }
-  .main .informacoes .react .quadro-5 {
+  .main .informacoes .sobre .quadro-5 {
     order: 2;
     margin-top: 15px;
   }
-  .main .informacoes .react .quadro-6 {
+  .main .informacoes .sobre .quadro-6 {
     margin-top: 10px;
   }
 }
-.main .informacoes .react .quadro-5 {
+.main .informacoes .sobre .quadro-5 {
   width: 300px;
   height: 350px;
-  border: 3px solid rgb(161, 211, 245);
+  border: 3px solid black;
   line-height: 20px;
   padding: 9px;
   text-align: center;
 }
-.main .informacoes .react .ttl-quadro {
+.main .informacoes .sobre .ttl-quadro {
   width: 300px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 0;
   text-align: center;
-  margin-left: 5px;
-  margin-right: 5px;
-  color: rgb(161, 211, 245);
+  color: black;
 }
-.main .informacoes .react .quadro-6 {
+.main .informacoes .sobre .quadro-6 {
   width: 300px;
   height: 350px;
-  border: 3px solid rgb(161, 211, 245);
+  border: 3px solid black;
   line-height: 20px;
   padding: 9px;
   text-align: center;
