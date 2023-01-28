@@ -202,14 +202,49 @@ a {
 .main .informacoes .react .quadro-1 {
   width: 300px;
   height: 350px;
+  max-width: 300px;
   border: 3px solid black;
   position: relative;
-  cursor: pointer;
+}
+.main .informacoes .react .quadro-1 .container-quadro {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.main .informacoes .react .quadro-1 .container-quadro .img {
+  width: 100%;
+  height: 90%;
+  background-image: url("../img/agency.png");
+  background-size: cover;
+  background-position: center;
+  transition: 0.6s;
+}
+.main .informacoes .react .quadro-1 .container-quadro .img:hover {
+  opacity: 0;
+}
+.main .informacoes .react .quadro-1 .container-quadro .link {
+  width: 100%;
+  height: 10%;
+  transition: 0.5s;
+}
+.main .informacoes .react .quadro-1 .container-quadro .link a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  transition: 0.5s;
+}
+.main .informacoes .react .quadro-1 .container-quadro .link a:hover {
+  background-color: #000;
+  color: #fff;
 }
 .main .informacoes .react .quadro-1 .paragrafo {
   width: 100%;
   height: 100%;
-  color: red;
+  line-height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -217,30 +252,53 @@ a {
 }
 .main .informacoes .react .quadro-1 .paragrafo text {
   text-align: center;
+  padding: 5px;
 }
-.main .informacoes .react .quadro-1 .img {
+.main .informacoes .react .quadro-2 {
+  max-width: 300px;
+  height: 350px;
+  border: 3px solid black;
+  position: relative;
+}
+.main .informacoes .react .quadro-2 .container-quadro {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-image: url("../img/Agency.png");
+}
+.main .informacoes .react .quadro-2 .container-quadro .img {
+  width: 100%;
+  height: 90%;
+  background-image: url("../img/agency.png");
   background-size: cover;
   background-position: center;
   transition: 0.6s;
 }
-.main .informacoes .react .quadro-1 .img:hover {
+.main .informacoes .react .quadro-2 .container-quadro .img:hover {
   opacity: 0;
 }
-.main .informacoes .react .quadro-2 {
-  width: 300px;
-  height: 350px;
-  border: 3px solid black;
-  position: relative;
-  cursor: pointer;
+.main .informacoes .react .quadro-2 .container-quadro .link {
+  width: 100%;
+  height: 10%;
+  transition: 0.5s;
+}
+.main .informacoes .react .quadro-2 .container-quadro .link a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  transition: 0.5s;
+}
+.main .informacoes .react .quadro-2 .container-quadro .link a:hover {
+  background-color: #000;
+  color: #fff;
 }
 .main .informacoes .react .quadro-2 .paragrafo {
   width: 100%;
   height: 100%;
-  color: red;
+  line-height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -248,18 +306,7 @@ a {
 }
 .main .informacoes .react .quadro-2 .paragrafo text {
   text-align: center;
-}
-.main .informacoes .react .quadro-2 .img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-image: url("../img/Agency.png");
-  background-size: cover;
-  background-position: center;
-  transition: 0.6s;
-}
-.main .informacoes .react .quadro-2 .img:hover {
-  opacity: 0;
+  padding: 5px;
 }
 .main .informacoes .hcj {
   width: 100%;
@@ -351,13 +398,46 @@ a {
   height: 350px;
   border: 3px solid black;
   position: relative;
-  cursor: pointer;
+}
+.main .informacoes .hcj .quadro-4 .container-quadro {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.main .informacoes .hcj .quadro-4 .container-quadro .img {
+  width: 100%;
+  height: 90%;
+  background-image: url("../img/clima.png");
+  background-size: cover;
+  background-position: center;
+  transition: 0.6s;
+}
+.main .informacoes .hcj .quadro-4 .container-quadro .img:hover {
+  opacity: 0;
+}
+.main .informacoes .hcj .quadro-4 .container-quadro .link {
+  width: 100%;
+  height: 10%;
+  transition: 0.5s;
+}
+.main .informacoes .hcj .quadro-4 .container-quadro .link a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  transition: 0.5s;
+}
+.main .informacoes .hcj .quadro-4 .container-quadro .link a:hover {
+  background-color: #000;
+  color: #fff;
 }
 .main .informacoes .hcj .quadro-4 .paragrafo {
   width: 100%;
   height: 100%;
   line-height: 20px;
-  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -365,24 +445,7 @@ a {
 }
 .main .informacoes .hcj .quadro-4 .paragrafo text {
   text-align: center;
-}
-.main .informacoes .hcj .quadro-4 .paragrafo .link {
   padding: 5px;
-  border-radius: 6px;
-  background-color: black;
-  color: #fff;
-}
-.main .informacoes .hcj .quadro-4 .img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-image: url("../img/clima.png");
-  background-size: cover;
-  background-position: center;
-  transition: 0.6s;
-}
-.main .informacoes .hcj .quadro-4 .img:hover {
-  opacity: 0;
 }
 .main .informacoes .sobre {
   margin-bottom: 20px;
