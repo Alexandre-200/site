@@ -3,6 +3,7 @@ var velT;
 var tamTelaW, tamTelaH;
 var jogo;
 var frames;
+var localNave;
 var contBombas,
   painelContBombas,
   velB,
@@ -14,27 +15,56 @@ var vida;
 var ie, isom;
 var telaMsg;
 
-
-
 function quantidadeVida(vida) {
-  var c1 = document.getElementById("c1");
-  var qv = document.getElementById("qtdVidas");
-  qv.innerText = vida;
+  if (vida >= 0) {
+    var qv = document.getElementById("qtdVidas");
+    qv.innerText = vida;
+
+    var sofreu = document.createElement("div");
+    var att1 = document.createAttribute("class");
+    var att2 = document.createAttribute("style");
+    att1.value = "sofreu";
+    att2.value =
+      "width: 100%;" +
+      "height:100%;" +
+      "left:0;" +
+      "top:0;" +
+      "opacity: .3;" +
+      "position: absolute;" +
+      "background-color:red;";
+
+    sofreu.setAttributeNode(att1);
+    sofreu.setAttributeNode(att2);
+    document.body.appendChild(sofreu);
+
+    setTimeout(() => {
+      document.body.removeChild(sofreu);
+    }, 400);
+    if (vida == 0) {
+      setTimeout(() => {
+        reinicia();
+        window.scrollTo(0, document.body.scrollHeight);
+        apagarMonstros();
+        location.reload();
+      }, 2000);
+    }
+  }
 }
 
 function teclaDw() {
   var tecla = event.keyCode;
   pjx = jog.offsetLeft;
   if (pjx > 0 && pjx < tamTelaW - 40) {
-    if (tecla == 65) {
-      // ATIRA
-      atira(pjx + 17, pjy);
-    } else if (tecla == 37) {
-      dirxJ = -1;
-      // ESQUERDA
-    } else if (tecla == 39) {
-      dirxJ = 1;
-      // DIREITA
+    if (localNave <= 2) {
+      if (tecla == 65) {
+        atira(pjx + 17, pjy);
+      } else if (tecla == 37) {
+        dirxJ = -1;
+        // ESQUERDAaaaaa
+      } else if (tecla == 39) {
+        dirxJ = 1;
+        // DIREITA
+      }
     }
     pjx += dirxJ * velJ;
     jog.style.left = pjx + "px";
@@ -60,10 +90,16 @@ function teclaUp() {
 
 function criaBomba() {
   //telaMsg.style.backgroundImage = "url('../img/vitoria.jpg')";
-  if (jogo && qtdBombas < 5) {
+  if (jogo && qtdBombas < 10) {
     var y = 0;
     var x = Math.random() * tamTelaW - 24;
-
+    console.log(tamTelaW - 24);
+    if (x < 24) {
+      x += 48;
+    } else if (x >= tamTelaW - 48) {
+      x -= 72;
+    }
+    //x = tamTelaW-72;
     var bomba = document.createElement("div");
     var att1 = document.createAttribute("class");
     var att2 = document.createAttribute("style");
@@ -90,13 +126,13 @@ function controlaBomba() {
       var py = bombasTotal[i].offsetTop;
       var px = bombasTotal[i].offsetLeft;
       var mov;
+      // 1 esquerda 3 direita
       mov = Math.floor(Math.random() * 1);
 
       if (mov == 1) {
-        //1 = Y
-        if (px - 24 <= 0) {
+        if (px - 72 <= 0) {
           px += 50;
-        } else if (px >= tamTelaW) {
+        } else if (px + 72 >= tamTelaW) {
           px -= 50;
         } else {
           mov = Math.floor(Math.random() * 2);
@@ -106,7 +142,6 @@ function controlaBomba() {
             px -= 50;
           }
         }
-      } else {
       }
 
       py += 30;
@@ -130,12 +165,22 @@ function verificaPassagemBomba() {
   }
 }
 
+function apagarMonstros() {
+  bombasTotal = document.getElementsByClassName("bomba");
+  var tam = bombasTotal.length;
+  for (var i = 0; i < tam; i++) {
+    if (bombasTotal[i]) {
+      bombasTotal[i].remove();
+    }
+  }
+}
+
 function atira(x, y) {
   var t = document.createElement("div");
   var att1 = document.createAttribute("class");
   var att2 = document.createAttribute("style");
   att1.value = "tiroJog";
-  att2.value = "top:" + y + "px; left:" + x + "px";
+  att2.value = "top:" + y + "px; left:" + x + "px; background-color:gray;";
   t.setAttributeNode(att1);
   t.setAttributeNode(att2);
   document.body.appendChild(t);
@@ -291,7 +336,7 @@ function reinicia() {
   qtdBombas = 0;
   vida = 5;
   jogo = true;
-  tmpCriaBomba = setInterval(criaBomba, 1700);
+  tmpCriaBomba = setInterval(criaBomba, 500);
   tmpcontrolaBomba = setInterval(controlaBomba, 1000);
   gameLoop();
 }
@@ -310,7 +355,7 @@ function inicia() {
   jog = document.getElementById("navJog");
 
   //jog.style.top = pjy + "px";
- // jog.style.left = "50%";
+  // jog.style.left = "50%";
 
   //controle de bombas
   qtdBombas = 0;
@@ -330,16 +375,25 @@ function inicia() {
   //document.getElementById("btnJogar").addEventListener("click", reinicia);
 }
 
-window.addEventListener("load", inicia);
+window.addEventListener("load", () => {
+  window.scrollTo(0, document.body.scrollHeight);
+});
 document.addEventListener("keydown", teclaDw);
 document.addEventListener("keyup", teclaUp);
 
-window.addEventListener('scroll', function() {
+window.addEventListener("scroll", function () {
   let doc = document.documentElement;
-  let elem = document.getElementById('scrool')
-  let value = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight))
- 
-  if(value <= 50){
-    window.scrollTop(0);
+
+  let value = parseInt(
+    (100 * doc.scrollTop) / (doc.scrollHeight - doc.clientHeight)
+  );
+  localNave = value;
+  if (value <= 10) {
+    const title = document.title;
+    if (title === "Nave-Game") {
+      inicia();
+    }
+  } else if (value >= 40) {
+    apagarMonstros();
   }
-})
+});

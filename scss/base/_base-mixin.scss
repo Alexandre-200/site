@@ -10,13 +10,94 @@
   }
 }
 
-@mixin quadro {
-  width: 250px;
-  height: 300px;
-  border: 3px solid rgb(161, 211, 245);
+@mixin quadro-exemplos {
+  width: 300px;
+  height: 350px;
+  border: 3px solid black;
+  position: relative;
 
-  position: absolute;
+  .container-quadro {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    .img {
+      width: 100%;
+      height: 90%;
+
+      background-image: url("../img/agency.png");
+      background-size: cover;
+      background-position: center;
+      transition: 0.6s;
+
+      &:hover {
+        opacity: 0;
+      }
+    }
+
+    .link {
+      width: 100%;
+      height: 10%;
+      transition: 0.5s;
+
+      a {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: $black;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: $black;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .paragrafo {
+    width: 100%;
+    height: 100%;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text {
+      text-align: center;
+      padding: 5px;
+    }
+  }
+}
+
+@mixin quadro-inf {
+  width: 300px;
+  height: 350px;
+  border: 3px solid black;
+  line-height: 20px;
+  padding: 9px;
+  text-align: center;
+}
+
+@mixin ttl {
+  width: 300px;
+  height: 50px;
   display: flex;
-  justify-items: center;
   align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  //margin-left: 5px;
+  //margin-right: 5px;
+  color: black;
+}
+
+@mixin params-quadros {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
