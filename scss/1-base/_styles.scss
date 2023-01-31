@@ -293,8 +293,6 @@
       margin-top: 10px;
       @include params-quadros;
 
-     
-
       @include mobile {
         flex-direction: column;
         justify-content: center;
@@ -324,6 +322,7 @@
 
       .quadro-6 {
         @include quadro-inf;
+        background-color: red;
       }
     }
   }

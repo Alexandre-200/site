@@ -19,35 +19,83 @@ a {
 
 .body-game {
   overflow-x: hidden;
-  width: 100vw;
-  height: 250vh;
   display: flex;
   justify-content: center;
+  width: 100vw;
+  height: 250vh;
 }
 
 .telaMsg {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(161, 211, 245);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(161, 211, 245);
 }
-.telaMsg .imagem {
+
+#header {
+  display: none;
+}
+
+#footer {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  z-index: 1;
+  bottom: 0px;
+}
+#footer #footerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: transparent;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.main .arena {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 48%;
+  background-color: #000;
+}
+.main .separar {
+  width: 100%;
+  height: 60px;
+  background-image: linear-gradient(180deg, black, white);
+}
+.main .informacoes {
+  width: 80%;
+  height: 48%;
+  max-width: 1120px;
+}
+
+.imagem {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background-color: red;
   margin-bottom: 25px;
 }
-.telaMsg .paragrafo {
+
+.paragrafo {
   width: 60%;
   font-size: 1.5rem;
   line-height: 35px;
   text-align: center;
 }
-.telaMsg .jogo {
+
+.jogo {
   margin-top: 10px;
   display: flex;
   justify-content: center;
@@ -56,13 +104,13 @@ a {
   flex-direction: column;
   width: 100%;
 }
-.telaMsg .jogo div {
+.jogo div {
   margin-bottom: 10px;
 }
-.telaMsg .jogo div text {
+.jogo div text {
   padding-left: 10px;
 }
-.telaMsg .jogo #btnJogar {
+.jogo #btnJogar {
   margin-top: 10px;
   padding: 10px;
   border: none;
@@ -75,15 +123,11 @@ a {
   color: rgb(161, 211, 245);
   transition: 0.5s;
 }
-.telaMsg .jogo #btnJogar:hover {
+.jogo #btnJogar:hover {
   cursor: pointer;
   color: #000;
   background-color: transparent;
   border: 1px solid #000;
-}
-
-#header {
-  display: none;
 }
 
 .navJog {
@@ -132,43 +176,29 @@ a {
   position: absolute;
 }
 
-#footer {
-  width: 100%;
-  height: 50px;
-  background-color: transparent;
-  z-index: 1;
-  position: fixed;
-  bottom: 0px;
-}
-#footer #footerContainer {
-  height: 50px;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#footer #footerContainer #barraVida {
+#barraVida {
   position: relative;
   margin-right: 50px;
 }
-#footer #footerContainer #barraVida #heart {
+#barraVida #heart {
   position: absolute;
   font-size: 45px;
   top: -22px;
 }
-#footer #footerContainer #barraVida #qtdVidas {
+#barraVida #qtdVidas {
   position: absolute;
   color: white;
   top: -8px;
   left: 25px;
 }
-#footer #footerContainer .menu_content {
+
+.menu_content {
   width: 30px;
   height: 40px;
   position: relative;
   margin-left: 50px;
 }
-#footer #footerContainer .menu_content .item {
+.menu_content .item {
   border-radius: 50px;
   color: white;
   padding: 5px;
@@ -176,82 +206,63 @@ a {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
-#footer #footerContainer .menu_content i {
+.menu_content i {
   font-size: 35px;
 }
-#footer #footerContainer .menu_content .link_git,
-#footer #footerContainer .menu_content .link_link {
+.menu_content .link_git,
+.menu_content .link_link {
   text-decoration: none;
   color: white;
 }
-#footer #footerContainer .menu_content .link_git:hover {
+.menu_content .link_git:hover {
   color: purple;
 }
-#footer #footerContainer .menu_content .link_link:hover {
+.menu_content .link_link:hover {
   color: blue;
 }
-#footer #footerContainer .menu_content .active {
+.menu_content .active {
   transform: rotate(45deg);
 }
-#footer #footerContainer .menu_content .active ~ .options .item:hover {
+.menu_content .active ~ .options .item:hover {
   scale: 1.1;
   transition: scale 0.3s;
 }
-#footer #footerContainer .menu_content .active ~ .options .item:nth-child(1) {
+.menu_content .active ~ .options .item:nth-child(1) {
   transform: translate(-4.5rem, -2.5rem);
 }
-#footer #footerContainer .menu_content .active ~ .options .item:nth-child(2) {
+.menu_content .active ~ .options .item:nth-child(2) {
   transform: translate(0, -5.5rem);
   transition-delay: 0.1s;
 }
 
-.main {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.main .arena {
-  width: 100%;
-  height: 48%;
-  display: flex;
-  justify-content: center;
-  background-image: linear-gradient(180deg, gray, white);
-}
-.main .informacoes {
-  width: 80%;
-  height: 48%;
-  max-width: 1120px;
-}
-.main .informacoes .react {
+.react {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 @media (max-width: 800px) {
-  .main .informacoes .react {
+  .react {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .main .informacoes .react .quadro-2 {
+  .react .quadro-2 {
     margin-top: 10px;
   }
 }
-.main .informacoes .react .quadro-1 {
+.react .quadro-1 {
   width: 300px;
   height: 350px;
   border: 3px solid black;
   position: relative;
 }
-.main .informacoes .react .quadro-1 .container-quadro {
+.react .quadro-1 .container-quadro {
   width: 100%;
   height: 100%;
   position: absolute;
 }
-.main .informacoes .react .quadro-1 .container-quadro .img {
+.react .quadro-1 .container-quadro .img {
   width: 100%;
   height: 90%;
   background-image: url("../img/agency.png");
@@ -259,15 +270,15 @@ a {
   background-position: center;
   transition: 0.6s;
 }
-.main .informacoes .react .quadro-1 .container-quadro .img:hover {
+.react .quadro-1 .container-quadro .img:hover {
   opacity: 0;
 }
-.main .informacoes .react .quadro-1 .container-quadro .link {
+.react .quadro-1 .container-quadro .link {
   width: 100%;
   height: 10%;
   transition: 0.5s;
 }
-.main .informacoes .react .quadro-1 .container-quadro .link a {
+.react .quadro-1 .container-quadro .link a {
   height: 100%;
   width: 100%;
   display: flex;
@@ -277,11 +288,11 @@ a {
   color: #000;
   transition: 0.5s;
 }
-.main .informacoes .react .quadro-1 .container-quadro .link a:hover {
+.react .quadro-1 .container-quadro .link a:hover {
   background-color: #000;
   color: #fff;
 }
-.main .informacoes .react .quadro-1 .paragrafo {
+.react .quadro-1 .paragrafo-quadro {
   width: 100%;
   height: 100%;
   line-height: 20px;
@@ -290,22 +301,22 @@ a {
   align-items: center;
   flex-direction: column;
 }
-.main .informacoes .react .quadro-1 .paragrafo text {
+.react .quadro-1 .paragrafo-quadro text {
   text-align: center;
   padding: 5px;
 }
-.main .informacoes .react .quadro-2 {
+.react .quadro-2 {
   width: 300px;
   height: 350px;
   border: 3px solid black;
   position: relative;
 }
-.main .informacoes .react .quadro-2 .container-quadro {
+.react .quadro-2 .container-quadro {
   width: 100%;
   height: 100%;
   position: absolute;
 }
-.main .informacoes .react .quadro-2 .container-quadro .img {
+.react .quadro-2 .container-quadro .img {
   width: 100%;
   height: 90%;
   background-image: url("../img/agency.png");
@@ -313,15 +324,15 @@ a {
   background-position: center;
   transition: 0.6s;
 }
-.main .informacoes .react .quadro-2 .container-quadro .img:hover {
+.react .quadro-2 .container-quadro .img:hover {
   opacity: 0;
 }
-.main .informacoes .react .quadro-2 .container-quadro .link {
+.react .quadro-2 .container-quadro .link {
   width: 100%;
   height: 10%;
   transition: 0.5s;
 }
-.main .informacoes .react .quadro-2 .container-quadro .link a {
+.react .quadro-2 .container-quadro .link a {
   height: 100%;
   width: 100%;
   display: flex;
@@ -331,11 +342,11 @@ a {
   color: #000;
   transition: 0.5s;
 }
-.main .informacoes .react .quadro-2 .container-quadro .link a:hover {
+.react .quadro-2 .container-quadro .link a:hover {
   background-color: #000;
   color: #fff;
 }
-.main .informacoes .react .quadro-2 .paragrafo {
+.react .quadro-2 .paragrafo-quadro {
   width: 100%;
   height: 100%;
   line-height: 20px;
@@ -344,11 +355,12 @@ a {
   align-items: center;
   flex-direction: column;
 }
-.main .informacoes .react .quadro-2 .paragrafo text {
+.react .quadro-2 .paragrafo-quadro text {
   text-align: center;
   padding: 5px;
 }
-.main .informacoes .hcj {
+
+.hcj {
   width: 100%;
   margin-top: 10px;
   display: flex;
@@ -356,47 +368,47 @@ a {
   justify-content: space-between;
 }
 @media (max-width: 800px) {
-  .main .informacoes .hcj {
+  .hcj {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .main .informacoes .hcj .ttl-quadro {
+  .hcj .ttl-quadro {
     order: 3;
   }
-  .main .informacoes .hcj .quadro-3 {
+  .hcj .quadro-3 {
     order: 2;
     margin-top: 10px;
   }
 }
-.main .informacoes .hcj .quadro-3 {
+.hcj .quadro-3 {
   width: 300px;
   height: 350px;
   border: 3px solid black;
   position: relative;
 }
-.main .informacoes .hcj .quadro-3 .container-quadro {
+.hcj .quadro-3 .container-quadro {
   width: 100%;
   height: 100%;
   position: absolute;
 }
-.main .informacoes .hcj .quadro-3 .container-quadro .img {
+.hcj .quadro-3 .container-quadro .img {
   width: 100%;
   height: 90%;
-  background-image: url("../img/agency.png");
+  background-image: url("../img/clima.png");
   background-size: cover;
   background-position: center;
   transition: 0.6s;
 }
-.main .informacoes .hcj .quadro-3 .container-quadro .img:hover {
+.hcj .quadro-3 .container-quadro .img:hover {
   opacity: 0;
 }
-.main .informacoes .hcj .quadro-3 .container-quadro .link {
+.hcj .quadro-3 .container-quadro .link {
   width: 100%;
   height: 10%;
   transition: 0.5s;
 }
-.main .informacoes .hcj .quadro-3 .container-quadro .link a {
+.hcj .quadro-3 .container-quadro .link a {
   height: 100%;
   width: 100%;
   display: flex;
@@ -406,11 +418,11 @@ a {
   color: #000;
   transition: 0.5s;
 }
-.main .informacoes .hcj .quadro-3 .container-quadro .link a:hover {
+.hcj .quadro-3 .container-quadro .link a:hover {
   background-color: #000;
   color: #fff;
 }
-.main .informacoes .hcj .quadro-3 .paragrafo {
+.hcj .quadro-3 .paragrafo-quadro {
   width: 100%;
   height: 100%;
   line-height: 20px;
@@ -419,31 +431,31 @@ a {
   align-items: center;
   flex-direction: column;
 }
-.main .informacoes .hcj .quadro-3 .paragrafo text {
+.hcj .quadro-3 .paragrafo-quadro text {
   text-align: center;
   padding: 5px;
 }
-.main .informacoes .hcj .ttl-quadro {
+.hcj .ttl-quadro {
   width: 300px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 25px;
   text-align: center;
-  color: black;
 }
-.main .informacoes .hcj .quadro-4 {
+.hcj .quadro-4 {
   width: 300px;
   height: 350px;
   border: 3px solid black;
   position: relative;
 }
-.main .informacoes .hcj .quadro-4 .container-quadro {
+.hcj .quadro-4 .container-quadro {
   width: 100%;
   height: 100%;
   position: absolute;
 }
-.main .informacoes .hcj .quadro-4 .container-quadro .img {
+.hcj .quadro-4 .container-quadro .img {
   width: 100%;
   height: 90%;
   background-image: url("../img/agency.png");
@@ -451,15 +463,15 @@ a {
   background-position: center;
   transition: 0.6s;
 }
-.main .informacoes .hcj .quadro-4 .container-quadro .img:hover {
+.hcj .quadro-4 .container-quadro .img:hover {
   opacity: 0;
 }
-.main .informacoes .hcj .quadro-4 .container-quadro .link {
+.hcj .quadro-4 .container-quadro .link {
   width: 100%;
   height: 10%;
   transition: 0.5s;
 }
-.main .informacoes .hcj .quadro-4 .container-quadro .link a {
+.hcj .quadro-4 .container-quadro .link a {
   height: 100%;
   width: 100%;
   display: flex;
@@ -469,11 +481,11 @@ a {
   color: #000;
   transition: 0.5s;
 }
-.main .informacoes .hcj .quadro-4 .container-quadro .link a:hover {
+.hcj .quadro-4 .container-quadro .link a:hover {
   background-color: #000;
   color: #fff;
 }
-.main .informacoes .hcj .quadro-4 .paragrafo {
+.hcj .quadro-4 .paragrafo-quadro {
   width: 100%;
   height: 100%;
   line-height: 20px;
@@ -482,11 +494,12 @@ a {
   align-items: center;
   flex-direction: column;
 }
-.main .informacoes .hcj .quadro-4 .paragrafo text {
+.hcj .quadro-4 .paragrafo-quadro text {
   text-align: center;
   padding: 5px;
 }
-.main .informacoes .sobre {
+
+.sobre {
   margin-bottom: 20px;
   margin-top: 10px;
   display: flex;
@@ -494,47 +507,51 @@ a {
   justify-content: space-between;
 }
 @media (max-width: 800px) {
-  .main .informacoes .sobre {
+  .sobre {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     bottom: 10px;
   }
-  .main .informacoes .sobre .ttl-quadro {
+  .sobre .ttl-quadro {
     order: 3;
   }
-  .main .informacoes .sobre .quadro-5 {
+  .sobre .quadro-5 {
     order: 2;
     margin-top: 15px;
   }
-  .main .informacoes .sobre .quadro-6 {
+  .sobre .quadro-6 {
     margin-top: 10px;
   }
 }
-.main .informacoes .sobre .quadro-5 {
+.sobre .quadro-5 {
   width: 300px;
   height: 350px;
   border: 3px solid black;
-  line-height: 20px;
+  line-height: 22px;
   padding: 9px;
   text-align: center;
+  max-width: 300px;
+  min-width: 260px;
 }
-.main .informacoes .sobre .ttl-quadro {
+.sobre .ttl-quadro {
   width: 300px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 25px;
   text-align: center;
-  color: black;
 }
-.main .informacoes .sobre .quadro-6 {
+.sobre .quadro-6 {
   width: 300px;
   height: 350px;
   border: 3px solid black;
-  line-height: 20px;
+  line-height: 22px;
   padding: 9px;
   text-align: center;
+  max-width: 300px;
+  min-width: 260px;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -14,19 +14,31 @@ var bombasTotal;
 var vida;
 var ie, isom;
 var telaMsg;
+var qtdTiros;
 
 function quantidadeVida(vida) {
+  let tempo = 400;
   if (vida >= 0) {
     var qv = document.getElementById("qtdVidas");
     qv.innerText = vida;
 
     var sofreu = document.createElement("div");
+
+    if (vida == 0) {
+      const texto = document.createTextNode("GAME - OVER");
+      sofreu.appendChild(texto);
+      tempo = 2000;
+    }
+
     var att1 = document.createAttribute("class");
     var att2 = document.createAttribute("style");
     att1.value = "sofreu";
     att2.value =
       "width: 100%;" +
       "height:100%;" +
+      "display: flex;" +
+      "align-items:center;" +
+      "justify-content: center;" +
       "left:0;" +
       "top:0;" +
       "opacity: .3;" +
@@ -39,7 +51,8 @@ function quantidadeVida(vida) {
 
     setTimeout(() => {
       document.body.removeChild(sofreu);
-    }, 400);
+    }, tempo);
+
     if (vida == 0) {
       setTimeout(() => {
         reinicia();
@@ -176,14 +189,17 @@ function apagarMonstros() {
 }
 
 function atira(x, y) {
-  var t = document.createElement("div");
-  var att1 = document.createAttribute("class");
-  var att2 = document.createAttribute("style");
-  att1.value = "tiroJog";
-  att2.value = "top:" + y + "px; left:" + x + "px; background-color:gray;";
-  t.setAttributeNode(att1);
-  t.setAttributeNode(att2);
-  document.body.appendChild(t);
+  if (qtdTiros <= 10) {
+    var t = document.createElement("div");
+    var att1 = document.createAttribute("class");
+    var att2 = document.createAttribute("style");
+    att1.value = "tiroJog";
+    att2.value = "top:" + y + "px; left:" + x + "px; background-color:gray;";
+    t.setAttributeNode(att1);
+    t.setAttributeNode(att2);
+    document.body.appendChild(t);
+    qtdTiros++;
+  }
 }
 
 function controleTiros() {
@@ -198,6 +214,7 @@ function controleTiros() {
       if (pt < 0) {
         //document.body.removeChild(tiros[i]);
         tiros[i].remove();
+        qtdTiros--;
       }
     }
   }
@@ -335,6 +352,7 @@ function reinicia() {
   contBombas = 150;
   qtdBombas = 0;
   vida = 5;
+  qtdTiros = 0;
   jogo = true;
   tmpCriaBomba = setInterval(criaBomba, 500);
   tmpcontrolaBomba = setInterval(controlaBomba, 1000);
@@ -359,6 +377,7 @@ function inicia() {
 
   //controle de bombas
   qtdBombas = 0;
+  qtdTiros = 0;
   contBombas = 150;
   velB = 3;
 
