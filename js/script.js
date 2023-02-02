@@ -69,14 +69,12 @@ function quantidadeVida(vida) {
 
 function quantidadeVidaNaveMae(vidaNaveMae) {
   let tempo = 400;
-  if(vidaNaveMae > 0){
+  if (vidaNaveMae > 0) {
     var qv = document.getElementById("qtdVidas-nave");
     qv.innerText = vidaNaveMae;
   }
- 
-  if (vidaNaveMae == 0) {
-    
 
+  if (vidaNaveMae == 0) {
     var sofreu = document.createElement("div");
 
     if (vidaNaveMae == 0) {
@@ -158,10 +156,15 @@ function teclaUp() {
 
 function criaMonstros() {
   //telaMsg.style.backgroundImage = "url('../img/vitoria.jpg')";
-  const naveInimiga = document.getElementById("qtd-vidas-nave");
-  if (jogo && qtdBombas < 10) {
-    var x =  naveInimiga.offsetLeft + 40;
-    /*
+
+  nave_mae = document.getElementById("qtd-vidas-nave");
+  var tamanho_nave_mae = nave_mae.getBoundingClientRect().bottom;
+
+  if (tamanho_nave_mae > 0) {
+    const naveInimiga = document.getElementById("qtd-vidas-nave");
+    if (jogo && qtdBombas < 10) {
+      var x = naveInimiga.offsetLeft + 40;
+      /*
     var x = Math.random() * tamTelaW - 24;
     console.log(tamTelaW - 24);
     if (x < 24) {
@@ -171,23 +174,24 @@ function criaMonstros() {
     }
     //x = tamTelaW-72;
     */
-    var y = 60;
+      var y = 60;
 
-    var et = document.createElement("div");
-    var att1 = document.createAttribute("class");
-    var att2 = document.createAttribute("style");
-    att1.value = "bomba";
-    att2.value =
-      "top:" +
-      y +
-      "px; left:" +
-      x +
-      "px;background-image: url('../../img/nave-filha.png');";
-    et.setAttributeNode(att1);
-    et.setAttributeNode(att2);
-    document.body.appendChild(et);
-    contBombas--;
-    qtdBombas++;
+      var et = document.createElement("div");
+      var att1 = document.createAttribute("class");
+      var att2 = document.createAttribute("style");
+      att1.value = "bomba";
+      att2.value =
+        "top:" +
+        y +
+        "px; left:" +
+        x +
+        "px;background-image: url('../../img/nave-filha.png');";
+      et.setAttributeNode(att1);
+      et.setAttributeNode(att2);
+      document.body.appendChild(et);
+      contBombas--;
+      qtdBombas++;
+    }
   }
 }
 
@@ -330,17 +334,18 @@ function colisaoTiroBomba(tiro) {
 
 function colisaoTiroNaveMae(tiro) {
   nave_mae = document.getElementById("qtd-vidas-nave");
-
-  if (
-    tiro.offsetTop <= nave_mae.offsetTop + 100 && //cima tiro com baixo bomba
-    tiro.offsetTop + 6 >= nave_mae.offsetTop && //baixo tiro com cima bomba
-    tiro.offsetLeft <= nave_mae.offsetLeft + 70 && //esquerda tiro com direita bomba
-    tiro.offsetLeft + 6 >= nave_mae.offsetLeft //direita tiro com esquerda bomba
-  ) {
-    criaExplossao(nave_mae.offsetLeft - 25, nave_mae.offsetTop);
-    vidaNaveMae--;
-    quantidadeVidaNaveMae(vidaNaveMae);
-    tiro.remove();
+  if (nave_mae) {
+    if (
+      tiro.offsetTop <= nave_mae.offsetTop + 100 && //cima tiro com baixo bomba
+      tiro.offsetTop + 6 >= nave_mae.offsetTop && //baixo tiro com cima bomba
+      tiro.offsetLeft <= nave_mae.offsetLeft + 70 && //esquerda tiro com direita bomba
+      tiro.offsetLeft + 6 >= nave_mae.offsetLeft //direita tiro com esquerda bomba
+    ) {
+      criaExplossao(nave_mae.offsetLeft - 25, nave_mae.offsetTop);
+      vidaNaveMae--;
+      quantidadeVidaNaveMae(vidaNaveMae);
+      tiro.remove();
+    }
   }
 }
 
@@ -508,6 +513,10 @@ function inicia() {
   //document.getElementById("btnJogar").addEventListener("click", reinicia);
 }
 
+function conflito() {
+  alert(tamanho_nave_mae.bottom);
+}
+
 window.addEventListener("load", () => {
   window.scrollTo(0, document.body.scrollHeight);
 });
@@ -523,12 +532,13 @@ window.addEventListener("scroll", function () {
     (100 * doc.scrollTop) / (doc.scrollHeight - doc.clientHeight)
   );
   localNave = value;
-  if (value <= 2) {
+  if (localNave <= 5) {
     const title = document.title;
     if (title === "Nave-Game") {
       inicia();
     }
   } else {
     apagarMonstros();
+    destroiNaveMae();
   }
 });
