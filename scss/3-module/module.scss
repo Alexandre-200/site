@@ -54,25 +54,13 @@
   }
 }
 
-.navJog {
-  width: 40px;
-  height: 40px;
-  background-image: url("../../img/nave_jog.gif");
-  position: fixed;
-  left: 50%;
-  bottom: 60px;
+.naveInimiga {
+  width: 100px;
+  height: 81px;
+  background-image: url("../../img/naveInimiga.png");
+  //position: fixed;
+  top: 0;
   //margin-bottom: 60px;
-}
-
-#barraVida {
-  display: flex;
-  background-color: transparent;
-}
-
-#heart {
-  font-size: 2rem;
-  color: rgb(246, 8, 8);
-  margin-left: 10px;
 }
 
 .tiroJog {
@@ -85,9 +73,23 @@
 
 .bomba {
   width: 24px;
-  height: 24px;
+  height: 18px;
   //background-image: url("../../img/et1.png");
   position: absolute;
+}
+
+#qtd-vidas-nave {
+  width: 100px;
+  height: 80px;
+  top: -10px;
+  left: 0px;
+  position: absolute;
+ 
+  #qtdVidas-nave {
+    position: relative;
+    color: gray;
+    top: 25px;
+  }
 }
 
 .explosaoChao {
@@ -103,20 +105,24 @@
 }
 
 #barraVida {
-  position: relative;
-  margin-right: 50px;
+  width: 40px;
+    height: 40px;
+  position: fixed;
+  bottom: 60px;
 
-  #heart {
-    position: absolute;
-    font-size: 45px;
-    top: -22px;
+  left: 51%;
+
+  .navJog {
+    width: 100%;
+    height: 100%;
+    background-image: url("../../img/nave_jog.gif");
+    //margin-bottom: 60px;
   }
 
   #qtdVidas {
-    position: absolute;
-    color: white;
-    top: -8px;
-    left: 25px;
+    position: relative;
+    color: gray;
+    left: 45px;
   }
 }
 .menu_content {
@@ -185,11 +191,11 @@
   }
 
   .quadro-1 {
-    @include quadro-exemplos("agency");
+    @include quadro-exemplos("nave-game");
   }
 
   .quadro-2 {
-    @include quadro-exemplos("agency");
+    @include quadro-exemplos("marioGame");
   }
 }
 

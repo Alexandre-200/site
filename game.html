@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/styles.css" />
-  
+
     <script type="text/javascript" src="./js/script.js" defer></script>
 
     <!-- font welsome -->
@@ -15,26 +15,40 @@
     <title>Nave-Game</title>
   </head>
   <body class="body-game">
-    <main class="main dark">
-      <div class="arena"></div>
-      <div class="separar"></div>
+    <main class="main">
+      <div class="arena">
+
+        <div id="qtd-vidas-nave" class="qtd-vidas-nave">
+          
+          <label id="qtdVidas-nave">10</label>
+        </div>
+
+        <!--
+        <div id="barraVida">
+          <i class="bx bxs-heart" id="heart" style="font-size: 45px"></i>
+          <label id="qtdVidas">5</label>
+        </div>
+      -->
+        </div>
+      </div>
+      <div class="separar">
+        <p>Destrua a nave mae</p>
+      </div>
       <div class="informacoes">
         <div class="react">
           <div class="quadro-1">
             <div class="container-quadro">
               <div class="img"></div>
               <div class="link">
-                <a target="_blank" href="https://alexandre-200.github.io/clima/"
-                  >Visitar</a
-                >
+                <a>Em Breve</a>
               </div>
             </div>
             <div class="paragrafo-quadro">
-              <text>Projeto: Agency</text>
+              <text>Projeto: Jogo de nave em Javascript</text>
               <br />
-              <text>Professor: Matheus Battisti</text>
+              <text>Professor: CFBCursos (Youtube)</text>
               <br />
-              <text>Linguagens: HTML, SCSS</text>
+              <text>Linguagens: HTML, SCSS, JavaScript</text>
             </div>
           </div>
 
@@ -42,17 +56,19 @@
             <div class="container-quadro">
               <div class="img"></div>
               <div class="link">
-                <a target="_blank" href="https://alexandre-200.github.io/clima/"
+                <a
+                  target="_blank"
+                  href="https://alexandre-200.github.io/GameMario/"
                   >Visitar</a
                 >
               </div>
             </div>
             <div class="paragrafo-quadro">
-              <text>Projeto: Agency</text>
+              <text>Projeto: Jogo Mario</text>
               <br />
-              <text>Professor: Matheus Battisti</text>
+              <text>Professor: Manual do Dev (Youtube)</text>
               <br />
-              <text>Linguagens: HTML, SCSS</text>
+              <text>Linguagens: HTML, CSS, JavaScript</text>
             </div>
           </div>
         </div>
@@ -111,9 +127,9 @@
           <text class="ttl-quadro">Quem sou eu?</text>
           <div class="quadro-6">
             <p class="parag">
-              Atualmente estou no meu sexto e ultimo semestre do curso de Analise
-              e desenvolvimento de Sistemas devendo penas terminar a materia
-              de estagio obrigatorio
+              Atualmente estou no meu sexto e ultimo semestre do curso de
+              Analise e desenvolvimento de Sistemas devendo penas terminar a
+              materia de estagio obrigatorio
             </p>
           </div>
         </div>
@@ -121,10 +137,12 @@
     </main>
     <footer id="footer">
       <div id="footerContainer">
+        <!--
         <div id="barraVida">
           <i class="bx bxs-heart" id="heart" style="font-size: 45px"></i>
           <label id="qtdVidas">5</label>
         </div>
+        -->
         <div class="menu_content">
           <div
             class="item floating_item"
@@ -155,8 +173,11 @@
         </div>
       </div>
     </footer>
-
-    <div id="navJog" class="navJog"></div>
+    <div id="barraVida">
+      <div id="navJog" class="navJog"></div>
+      <label id="qtdVidas">3</label>
+    </div>
+   
     <script>
       const menu = document.querySelector(".floating_item");
       menu.onclick = () => menu.classList.toggle("active");
