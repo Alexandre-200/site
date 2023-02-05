@@ -1,4 +1,5 @@
 @import "./module-mixins";
+@import "../1-base/base-mixins";
 
 .imagem {
   width: 200px;
@@ -78,13 +79,13 @@
   position: absolute;
 }
 
-#qtd-vidas-nave {
+.qtd-vidas-nave {
   width: 100px;
   height: 80px;
   top: -10px;
   left: 0px;
   position: absolute;
- 
+
   #qtdVidas-nave {
     position: relative;
     color: gray;
@@ -106,7 +107,7 @@
 
 #barraVida {
   width: 40px;
-    height: 40px;
+  height: 40px;
   position: fixed;
   bottom: 60px;
 
@@ -125,11 +126,59 @@
     left: 45px;
   }
 }
+
+.body-game {
+  .bx-moon {
+    display: block;
+  }
+
+  .bx-sun {
+    display: none;
+  }
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.bx {
+  font-size: 1.9rem;
+  cursor: pointer;
+}
+
+.bx-moon {
+  background-color: gray;
+  color: white;
+  display: block;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.bx-sun {
+  background-color: rgb(113, 215, 240);
+  display: none;
+  border-radius: 50%;
+  padding: 8px;
+  color: yellow;
+}
+
+.btn-flutuante {
+  position: fixed;
+  left: 93%;
+  bottom: 5%;
+
+  @include mobile {
+    left: 87%;
+    bottom: 7%;
+  }
+}
+
 .menu_content {
   width: 30px;
-  height: 40px;
+  height: 60px;
   position: relative;
-  margin-left: 50px;
+  //margin-left: 50px;
+
   .item {
     border-radius: 50px;
     color: white;
@@ -176,19 +225,37 @@
   }
 }
 
+.btn-tiro {
+  padding: 5px;
+  p {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 19px;
+  }
+}
+
+.habilidades{
+  .icones{
+    display: flex;
+
+    padding: 5px;
+    .html, .css, .sass, .javascript{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 15px;
+      
+    }
+
+    i {
+      font-size: 45px;
+    }
+  }
+}
+
 .react {
   width: 100%;
   @include params-quadros;
-
-  @include mobile {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .quadro-2 {
-      margin-top: 10px;
-    }
-  }
 
   .quadro-1 {
     @include quadro-exemplos("nave-game");
@@ -197,6 +264,14 @@
   .quadro-2 {
     @include quadro-exemplos("marioGame");
   }
+  
+  .quadro-1,
+  .quadro-2 {
+    @include mobile {
+      @include quadro-exemplos-mobile();
+    }
+  }
+
 }
 
 .hcj {
@@ -205,16 +280,13 @@
   @include params-quadros;
 
   @include mobile {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+ 
     .ttl-quadro {
       order: 3;
     }
     .quadro-3 {
       order: 2;
-      margin-top: 10px;
+     // margin-top: 10px;
     }
   }
 
@@ -223,11 +295,22 @@
   }
 
   .ttl-quadro {
-    @include ttl;
+    @include quadro-titulo;
+
+    @include mobile {
+      //@include quadro-titulo-mobile;
+    }
   }
 
   .quadro-4 {
     @include quadro-exemplos("agency");
+  }
+
+  .quadro-3,
+  .quadro-4 {
+    @include mobile {
+      @include quadro-exemplos-mobile();
+    }
   }
 }
 
@@ -236,34 +319,55 @@
   margin-top: 10px;
   @include params-quadros;
 
-  @include mobile {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    bottom: 10px;
-
-    .ttl-quadro {
-      order: 3;
-    }
-    .quadro-5 {
-      order: 2;
-      margin-top: 15px;
-    }
-
-    .quadro-6 {
-      margin-top: 10px;
-    }
-  }
-
-  .quadro-5 {
-    @include quadro-inf;
-  }
-
-  .ttl-quadro {
-    @include ttl;
-  }
-
+  .quadro-5,
   .quadro-6 {
     @include quadro-inf;
+
+    @include mobile {
+      @include quadro-inf-mobile;
+    }
+  }
+
+ 
+}
+
+.dark {
+  background-color: rgb(93, 93, 93);
+  color: white;
+
+  .separar {
+    background-image: linear-gradient(180deg, black, rgb(93, 93, 93));
+    p {
+      color: white;
+    }
+  }
+
+  .quadro-1,
+  .quadro-2,
+  .quadro-3,
+  .quadro-4,
+  .quadro-5,
+  .quadro-6 {
+    border: 3px solid white;
+    .container-quadro {
+      .link {
+        a {
+          border-top: 3px solid white;
+          color: white;
+          &:hover {
+            background-color: white;
+            color: rgb(93, 93, 93);
+          }
+        }
+      }
+    }
+  }
+
+  .bx-moon {
+    display: none;
+  }
+
+  .bx-sun {
+    display: block;
   }
 }

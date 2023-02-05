@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/styles.css" />
 
     <script type="text/javascript" src="./js/script.js" defer></script>
+    <script type="text/javascript" src="./js/theme.js" defer></script>
 
     <!-- font welsome -->
     <link
@@ -14,27 +15,47 @@
 
     <title>Nave-Game</title>
   </head>
-  <body class="body-game"  id="body-game">
+  <body class="body-game">
     <main class="main">
-      <div class="arena" id="arena">
+      <div class="arena">
 
         <div id="qtd-vidas-nave" class="qtd-vidas-nave">
           
           <label id="qtdVidas-nave">10</label>
         </div>
-
-        <!--
-        <div id="barraVida">
-          <i class="bx bxs-heart" id="heart" style="font-size: 45px"></i>
-          <label id="qtdVidas">5</label>
-        </div>
-      -->
-        </div>
+       
       </div>
       <div class="separar">
         <p>Destrua a nave mae</p>
       </div>
+
+      <div class="habilidades">
+        <div class="icones">
+          <div class="html">
+            <p>HTML5</p>
+            <i class='bx bxl-html5'></i>
+          </div>
+          <div class="css">
+            <p>CSS3</p>
+            <i class='bx bxl-css3' ></i>
+          </div>
+          <div class="sass">
+            <p>SASS</p>
+            <i class='bx bxl-sass' ></i>
+          </div>
+          <div class="javascript">
+            <p>JavaScript</p>
+            <i class='bx bxl-javascript'></i>
+          </div>
+        </div>
+        
+      </div>
       <div class="informacoes">
+        <div class="quadros-titulos">
+          <text >
+            Habilidades   
+          </text>
+        </div>
         <div class="react">
           <div class="quadro-1">
             <div class="container-quadro">
@@ -72,6 +93,7 @@
             </div>
           </div>
         </div>
+
         <div class="hcj">
           <div class="quadro-3">
             <div class="container-quadro">
@@ -91,9 +113,7 @@
             </div>
           </div>
 
-          <text class="ttl-quadro"
-            >Projetos que me ajudaram a criar este portfólio.
-          </text>
+          
 
           <div class="quadro-4">
             <div class="container-quadro">
@@ -117,6 +137,12 @@
           </div>
         </div>
 
+        <div class="quadros-titulos">
+          <text >
+            Alguns dos projetos que me ajudaram a criar este portfólio.   
+          </text>
+        </div>
+
         <div class="sobre">
           <div class="quadro-5">
             <p class="parag">
@@ -124,7 +150,7 @@
               socioeducador
             </p>
           </div>
-          <text class="ttl-quadro">Quem sou eu?</text>
+         
           <div class="quadro-6">
             <p class="parag">
               Atualmente estou no meu sexto e ultimo semestre do curso de
@@ -133,45 +159,65 @@
             </p>
           </div>
         </div>
+
+        <div class="quadros-titulos">
+          <text >
+            Quem sou eu?  
+          </text>
+        </div>
+
       </div>
+
+
+    <div class="btn-flutuante">
+      <div class="menu_content">
+        <div
+          class="item floating_item"
+          style="background-color: #0081cf; z-index: 1; rotate: 45deg"
+        >
+          <i class="bx bx-x"></i>
+        </div>
+        <div class="options">
+          <div class="item" style="background-color: #6e5494">
+            <a
+              target="_blank"
+              href="https://github.com/Alexandre-200"
+              class="link_git"
+            >
+              <i class="bx bxl-github"> </i
+            ></a>
+          </div>
+          <div class="item" style="background-color: #0081cf">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/carlos-alexandre-3a41b6264/"
+              class="link_link"
+            >
+              <i class="bx bxl-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="theme">
+        <input type="checkbox" name="change-theme" id="change-theme" />
+        <label for="change-theme">
+          <i class='bx bx-sun' ></i>
+          <i class='bx bx-moon'></i>
+        </label>
+      </div>
+    </div>
+
     </main>
     <footer id="footer">
       <div id="footerContainer">
-        <!--
-        <div id="barraVida">
-          <i class="bx bxs-heart" id="heart" style="font-size: 45px"></i>
-          <label id="qtdVidas">5</label>
-        </div>
-        -->
-        <div class="menu_content">
-          <div
-            class="item floating_item"
-            style="background-color: #0081cf; z-index: 1; rotate: 45deg"
-          >
-            <i class="bx bx-x"></i>
-          </div>
-          <div class="options">
-            <div class="item" style="background-color: #6e5494">
-              <a
-                target="_blank"
-                href="https://github.com/Alexandre-200"
-                class="link_git"
-              >
-                <i class="bx bxl-github"> </i
-              ></a>
-            </div>
-            <div class="item" style="background-color: #0081cf">
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/in/carlos-alexandre-3a41b6264/"
-                class="link_link"
-              >
-                <i class="bx bxl-linkedin"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+        <i class='bx bxs-left-arrow' id="btn-esquerda"></i>
+        <i class='bx bxs-right-arrow' id="btn-direita"></i>
+       <!-- <i class='bx bxs-up-arrow' id="btn-cima"></i>-->
+        <i class='bx bxs-chevrons-up' id="btn-tiro"></i>
+          <!-- <i class='bx bxs-down-arrow' id="btn-baixo"></i>-->
+         
       </div>
+
     </footer>
     <div id="barraVida">
       <div id="navJog" class="navJog"></div>

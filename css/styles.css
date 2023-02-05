@@ -22,7 +22,12 @@ a {
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 250vh;
+  height: 270vh;
+}
+@media (max-width: 800px) {
+  .body-game {
+    height: 280vh;
+  }
 }
 
 .telaMsg {
@@ -35,22 +40,24 @@ a {
   background-color: rgb(161, 211, 245);
 }
 
-#header {
+footer {
   display: none;
-}
-
-#footer {
   position: fixed;
   width: 100%;
   height: 50px;
-  background-color: transparent;
+  background-color: red;
   z-index: 1;
   bottom: 0px;
 }
-#footer #footerContainer {
+@media (max-width: 800px) {
+  footer {
+    display: block;
+  }
+}
+footer #footerContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 50px;
   background-color: transparent;
 }
@@ -70,8 +77,8 @@ a {
   background-color: #000;
 }
 .main .separar {
-  width: 100%;
-  height: 60px;
+  width: 100vw;
+  height: 8vh;
   background-image: linear-gradient(180deg, black, white);
   display: flex;
   align-items: center;
@@ -81,9 +88,20 @@ a {
   color: rgb(71, 70, 70);
 }
 .main .informacoes {
-  width: 100%;
-  height: 48%;
+  width: 100vw;
+  height: 142vh;
   max-width: 1120px;
+}
+.main .informacoes .quadros-titulos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+.main .informacoes .quadros-titulos text {
+  width: 400px;
+  text-align: center;
 }
 
 .imagem {
@@ -157,14 +175,14 @@ a {
   position: absolute;
 }
 
-#qtd-vidas-nave {
+.qtd-vidas-nave {
   width: 100px;
   height: 80px;
   top: -10px;
   left: 0px;
   position: absolute;
 }
-#qtd-vidas-nave #qtdVidas-nave {
+.qtd-vidas-nave #qtdVidas-nave {
   position: relative;
   color: gray;
   top: 25px;
@@ -200,11 +218,54 @@ a {
   left: 45px;
 }
 
+.body-game .bx-moon {
+  display: block;
+}
+.body-game .bx-sun {
+  display: none;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+.bx {
+  font-size: 1.9rem;
+  cursor: pointer;
+}
+
+.bx-moon {
+  background-color: gray;
+  color: white;
+  display: block;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.bx-sun {
+  background-color: rgb(113, 215, 240);
+  display: none;
+  border-radius: 50%;
+  padding: 8px;
+  color: yellow;
+}
+
+.btn-flutuante {
+  position: fixed;
+  left: 93%;
+  bottom: 5%;
+}
+@media (max-width: 800px) {
+  .btn-flutuante {
+    left: 87%;
+    bottom: 7%;
+  }
+}
+
 .menu_content {
   width: 30px;
-  height: 40px;
+  height: 60px;
   position: relative;
-  margin-left: 50px;
 }
 .menu_content .item {
   border-radius: 50px;
@@ -243,21 +304,35 @@ a {
   transition-delay: 0.1s;
 }
 
+.btn-tiro {
+  padding: 5px;
+}
+.btn-tiro p {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 19px;
+}
+
+.habilidades .icones {
+  display: flex;
+  padding: 5px;
+}
+.habilidades .icones .html, .habilidades .icones .css, .habilidades .icones .sass, .habilidades .icones .javascript {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+}
+.habilidades .icones i {
+  font-size: 45px;
+}
+
 .react {
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-}
-@media (max-width: 800px) {
-  .react {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .react .quadro-2 {
-    margin-top: 10px;
-  }
 }
 .react .quadro-1 {
   width: 300px;
@@ -295,6 +370,7 @@ a {
   text-align: center;
   color: #000;
   transition: 0.5s;
+  border-top: 3px solid black;
 }
 .react .quadro-1 .container-quadro .link a:hover {
   background-color: #000;
@@ -349,6 +425,7 @@ a {
   text-align: center;
   color: #000;
   transition: 0.5s;
+  border-top: 3px solid black;
 }
 .react .quadro-2 .container-quadro .link a:hover {
   background-color: #000;
@@ -367,26 +444,38 @@ a {
   text-align: center;
   padding: 5px;
 }
+@media (max-width: 800px) {
+  .react .quadro-1,
+  .react .quadro-2 {
+    width: 220px;
+    height: 300px;
+    border: 2px solid black;
+  }
+  .react .quadro-1 .paragrafo-quadro,
+  .react .quadro-2 .paragrafo-quadro {
+    line-height: 15px;
+  }
+  .react .quadro-1 .paragrafo-quadro text,
+  .react .quadro-2 .paragrafo-quadro text {
+    text-align: center;
+    padding: 4px;
+  }
+}
 
 .hcj {
   width: 100%;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
 @media (max-width: 800px) {
-  .hcj {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
   .hcj .ttl-quadro {
     order: 3;
   }
   .hcj .quadro-3 {
     order: 2;
-    margin-top: 10px;
   }
 }
 .hcj .quadro-3 {
@@ -425,6 +514,7 @@ a {
   text-align: center;
   color: #000;
   transition: 0.5s;
+  border-top: 3px solid black;
 }
 .hcj .quadro-3 .container-quadro .link a:hover {
   background-color: #000;
@@ -488,6 +578,7 @@ a {
   text-align: center;
   color: #000;
   transition: 0.5s;
+  border-top: 3px solid black;
 }
 .hcj .quadro-4 .container-quadro .link a:hover {
   background-color: #000;
@@ -506,51 +597,33 @@ a {
   text-align: center;
   padding: 5px;
 }
+@media (max-width: 800px) {
+  .hcj .quadro-3,
+  .hcj .quadro-4 {
+    width: 220px;
+    height: 300px;
+    border: 2px solid black;
+  }
+  .hcj .quadro-3 .paragrafo-quadro,
+  .hcj .quadro-4 .paragrafo-quadro {
+    line-height: 15px;
+  }
+  .hcj .quadro-3 .paragrafo-quadro text,
+  .hcj .quadro-4 .paragrafo-quadro text {
+    text-align: center;
+    padding: 4px;
+  }
+}
 
 .sobre {
   margin-bottom: 20px;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
-@media (max-width: 800px) {
-  .sobre {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    bottom: 10px;
-  }
-  .sobre .ttl-quadro {
-    order: 3;
-  }
-  .sobre .quadro-5 {
-    order: 2;
-    margin-top: 15px;
-  }
-  .sobre .quadro-6 {
-    margin-top: 10px;
-  }
-}
-.sobre .quadro-5 {
-  width: 300px;
-  height: 350px;
-  border: 3px solid black;
-  line-height: 22px;
-  padding: 9px;
-  text-align: center;
-  max-width: 300px;
-  min-width: 260px;
-}
-.sobre .ttl-quadro {
-  width: 300px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 25px;
-  text-align: center;
-}
+.sobre .quadro-5,
 .sobre .quadro-6 {
   width: 300px;
   height: 350px;
@@ -559,7 +632,61 @@ a {
   padding: 9px;
   text-align: center;
   max-width: 300px;
-  min-width: 260px;
+  min-width: 220px;
+}
+@media (max-width: 800px) {
+  .sobre .quadro-5,
+  .sobre .quadro-6 {
+    width: 220px;
+    height: 300px;
+    border: 2px solid black;
+    line-height: 18px;
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
+.dark {
+  background-color: rgb(93, 93, 93);
+  color: white;
+}
+.dark .separar {
+  background-image: linear-gradient(180deg, black, rgb(93, 93, 93));
+}
+.dark .separar p {
+  color: white;
+}
+.dark .quadro-1,
+.dark .quadro-2,
+.dark .quadro-3,
+.dark .quadro-4,
+.dark .quadro-5,
+.dark .quadro-6 {
+  border: 3px solid white;
+}
+.dark .quadro-1 .container-quadro .link a,
+.dark .quadro-2 .container-quadro .link a,
+.dark .quadro-3 .container-quadro .link a,
+.dark .quadro-4 .container-quadro .link a,
+.dark .quadro-5 .container-quadro .link a,
+.dark .quadro-6 .container-quadro .link a {
+  border-top: 3px solid white;
+  color: white;
+}
+.dark .quadro-1 .container-quadro .link a:hover,
+.dark .quadro-2 .container-quadro .link a:hover,
+.dark .quadro-3 .container-quadro .link a:hover,
+.dark .quadro-4 .container-quadro .link a:hover,
+.dark .quadro-5 .container-quadro .link a:hover,
+.dark .quadro-6 .container-quadro .link a:hover {
+  background-color: white;
+  color: rgb(93, 93, 93);
+}
+.dark .bx-moon {
+  display: none;
+}
+.dark .bx-sun {
+  display: block;
 }
 
 /*# sourceMappingURL=styles.css.map */

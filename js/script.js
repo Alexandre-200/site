@@ -3,18 +3,14 @@ var nave_mae,
   tmpControlaNaveMae,
   pos,
   posicao = 1;
-var velT;
+var velT, velocidadeNaveMae;
 var tamTelaW, tamTelaH;
 var jogo;
 var frames;
 var localNave;
-var contBombas,
-  painelContBombas,
-  velB,
-  tmpCriaMonstros,
-  tmpcontrolaBomba,
-  qtdBombas;
-var bombasTotal;
+var tmpCriaEts, tmpcontrolaEts;
+
+var EtsTotal;
 var vida, vidaNaveMae;
 var ie, isom;
 var telaMsg;
@@ -60,7 +56,8 @@ function quantidadeVida(vida) {
       setTimeout(() => {
         reinicia();
         window.scrollTo(0, document.body.scrollHeight);
-        apagarMonstros();
+        apagarEts();
+        destroiNaveMae();
         location.reload();
       }, 2000);
     }
@@ -69,7 +66,7 @@ function quantidadeVida(vida) {
 
 function quantidadeVidaNaveMae(vidaNaveMae) {
   let tempo = 400;
-  if (vidaNaveMae > 0) {
+  if (vidaNaveMae >= 0) {
     var qv = document.getElementById("qtdVidas-nave");
     qv.innerText = vidaNaveMae;
   }
@@ -110,9 +107,20 @@ function quantidadeVidaNaveMae(vidaNaveMae) {
       setTimeout(() => {
         reinicia();
         window.scrollTo(0, document.body.scrollHeight);
-        apagarMonstros();
+        apagarEts();
         location.reload();
       }, 2000);
+    }
+
+    if (vidaNaveMae == 7) {
+      velociadeNaveMae--;
+    }
+
+    if (vidaNaveMae == 5) {
+      velociadeNaveMae--;
+    }
+    if (vidaNaveMae == 3) {
+      velociadeNaveMae--;
     }
   }
 }
@@ -145,6 +153,7 @@ function teclaDw() {
 
 function teclaUp() {
   var tecla = event.keyCode;
+
   if (tecla == 39) {
     dirxJ = 0;
   } else if (tecla == 37) {
@@ -154,26 +163,50 @@ function teclaUp() {
   }
 }
 
-function criaMonstros() {
-  //telaMsg.style.backgroundImage = "url('../img/vitoria.jpg')";
+function teclaUpMobile(tecla) {
+  if (tecla == 39) {
+    dirxJ = 0;
+  } else if (tecla == 37) {
+    dirxJ = 0;
+  } else if (tecla == 65) {
+    atira(pjx + 17, pjy);
+  }
+}
 
+function teclaDwMobile(tecla) {
+  if (tecla) {
+    pjx = jog.offsetLeft;
+    if (pjx > 0 && pjx < tamTelaW - 40) {
+      if (localNave <= 2) {
+        if (tecla == 37) {
+          dirxJ = -5;
+          // ESQUERDAaaaaa
+        } else if (tecla == 39) {
+          dirxJ = 5;
+          // DIREITA
+        }
+      }
+      pjx += dirxJ * velJ;
+      jog.style.left = pjx + "px";
+    } else {
+      if (pjx < 10) {
+        pjx = 5;
+        jog.style.left = pjx + "px";
+      } else if (pjx > tamTelaW - 45) {
+        pjx = tamTelaW - 45;
+        jog.style.left = pjx + "px";
+      }
+    }
+  }
+}
+
+function criaEts() {
   nave_mae = document.getElementById("qtd-vidas-nave");
   var tamanho_nave_mae = nave_mae.getBoundingClientRect().bottom;
 
   if (tamanho_nave_mae > 0) {
-    const naveInimiga = document.getElementById("qtd-vidas-nave");
-    if (jogo && qtdBombas < 10) {
-      var x = naveInimiga.offsetLeft + 40;
-      /*
-    var x = Math.random() * tamTelaW - 24;
-    console.log(tamTelaW - 24);
-    if (x < 24) {
-      x += 48;
-    } else if (x >= tamTelaW - 48) {
-      x -= 72;
-    }
-    //x = tamTelaW-72;
-    */
+    if (jogo) {
+      var x = nave_mae.offsetLeft + 40;
       var y = 60;
 
       var et = document.createElement("div");
@@ -189,19 +222,15 @@ function criaMonstros() {
       et.setAttributeNode(att1);
       et.setAttributeNode(att2);
       document.body.appendChild(et);
-      contBombas--;
-      qtdBombas++;
     }
   }
 }
 
 function criaNaveMae() {
-  //telaMsg.style.backgroundImage = "url('../img/vitoria.jpg')";
-
-  var dnm = document.getElementById("qtd-vidas-nave");
+  nave_mae = document.getElementById("qtd-vidas-nave");
 
   if (jogo) {
-    var nave_mae = document.createElement("div");
+    var nm = document.createElement("div");
     var att1 = document.createAttribute("id");
     var att2 = document.createAttribute("style");
     att1.value = "nave_mae";
@@ -209,17 +238,13 @@ function criaNaveMae() {
       "width: 100%;" +
       "height: 100%;" +
       "background-image: url('../../img/nave-mae.png');";
-    nave_mae.setAttributeNode(att1);
-    nave_mae.setAttributeNode(att2);
-    dnm.appendChild(nave_mae);
-    contBombas--;
-    qtdBombas++;
+    nm.setAttributeNode(att1);
+    nm.setAttributeNode(att2);
+    nave_mae.appendChild(nm);
   }
 }
 
 function destroiNaveMae() {
-  //telaMsg.style.backgroundImage = "url('../img/vitoria.jpg')";
-
   if (jogo) {
     nave_mae = document.getElementById("nave_mae");
     if (nave_mae) {
@@ -230,17 +255,15 @@ function destroiNaveMae() {
 
 function controlaNaveMae() {
   nave_mae = document.getElementById("qtd-vidas-nave");
-
   pos = nave_mae.offsetLeft;
-
   if (pos <= tamTelaW - 100 && posicao == 1) {
-    pos += 5;
+    pos += velocidadeNaveMae;
     nave_mae.style.left = pos + "px";
     if (pos >= tamTelaW - 100) {
       posicao = 2;
     }
   } else if (pos >= 0 && posicao == 2) {
-    pos -= 5;
+    pos -= velocidadeNaveMae;
     nave_mae.style.left = pos + "px";
     if (pos <= 0) {
       posicao = 1;
@@ -248,38 +271,38 @@ function controlaNaveMae() {
   }
 }
 
-function controlaBomba() {
-  bombasTotal = document.getElementsByClassName("bomba");
-  var tam = bombasTotal.length;
+function controlaEts() {
+  EtsTotal = document.getElementsByClassName("bomba");
+  var tam = EtsTotal.length;
   for (var i = 0; i < tam; i++) {
-    if (bombasTotal[i]) {
-      var py = bombasTotal[i].offsetTop;
+    if (EtsTotal[i]) {
+      var py = EtsTotal[i].offsetTop;
       py += 6;
-      bombasTotal[i].style.top = py + "px";
+      EtsTotal[i].style.top = py + "px";
     }
   }
 }
 
-function verificaPassagemBomba() {
-  bombasTotal = document.getElementsByClassName("bomba");
-  var tam = bombasTotal.length;
+function verificaPassagemEts() {
+  EtsTotal = document.getElementsByClassName("bomba");
+  var tam = EtsTotal.length;
   for (var i = 0; i < tam; i++) {
-    if (bombasTotal[i]) {
-      var py = bombasTotal[i].offsetTop;
+    if (EtsTotal[i]) {
+      var py = EtsTotal[i].offsetTop;
       if (py > tamTelaH) {
-        bombasTotal[i].remove();
-        qtdBombas--;
+        EtsTotal[i].remove();
+        qtdEts--;
       }
     }
   }
 }
 
-function apagarMonstros() {
-  bombasTotal = document.getElementsByClassName("bomba");
-  var tam = bombasTotal.length;
+function apagarEts() {
+  EtsTotal = document.getElementsByClassName("bomba");
+  var tam = EtsTotal.length;
   for (var i = 0; i < tam; i++) {
-    if (bombasTotal[i]) {
-      bombasTotal[i].remove();
+    if (EtsTotal[i]) {
+      EtsTotal[i].remove();
     }
   }
 }
@@ -303,10 +326,9 @@ function controleTiros() {
       var pt = tiros[i].offsetTop;
       pt -= velT;
       tiros[i].style.top = pt + "px";
-      colisaoTiroBomba(tiros[i]);
+      colisaoTiroEts(tiros[i]);
       colisaoTiroNaveMae(tiros[i]);
       if (pt < 0) {
-        //document.body.removeChild(tiros[i]);
         tiros[i].remove();
         qtdTiros--;
       }
@@ -314,18 +336,18 @@ function controleTiros() {
   }
 }
 
-function colisaoTiroBomba(tiro) {
-  var tam = bombasTotal.length;
+function colisaoTiroEts(tiro) {
+  var tam = EtsTotal.length;
   for (var i = 0; i < tam; i++) {
-    if (bombasTotal[i]) {
+    if (EtsTotal[i]) {
       if (
-        tiro.offsetTop <= bombasTotal[i].offsetTop + 40 && //cima tiro com baixo bomba
-        tiro.offsetTop + 6 >= bombasTotal[i].offsetTop && //baixo tiro com cima bomba
-        tiro.offsetLeft <= bombasTotal[i].offsetLeft + 24 && //esquerda tiro com direita bomba
-        tiro.offsetLeft + 6 >= bombasTotal[i].offsetLeft //direita tiro com esquerda bomba
+        tiro.offsetTop <= EtsTotal[i].offsetTop + 40 && //cima tiro com baixo bomba
+        tiro.offsetTop + 6 >= EtsTotal[i].offsetTop && //baixo tiro com cima bomba
+        tiro.offsetLeft <= EtsTotal[i].offsetLeft + 24 && //esquerda tiro com direita bomba
+        tiro.offsetLeft + 6 >= EtsTotal[i].offsetLeft //direita tiro com esquerda bomba
       ) {
-        criaExplossao(bombasTotal[i].offsetLeft - 25, bombasTotal[i].offsetTop);
-        bombasTotal[i].remove();
+        criaExplossao(EtsTotal[i].offsetLeft - 25, EtsTotal[i].offsetTop);
+        EtsTotal[i].remove();
         tiro.remove();
       }
     }
@@ -334,34 +356,33 @@ function colisaoTiroBomba(tiro) {
 
 function colisaoTiroNaveMae(tiro) {
   nave_mae = document.getElementById("qtd-vidas-nave");
-  if (nave_mae) {
-    if (
-      tiro.offsetTop <= nave_mae.offsetTop + 100 && //cima tiro com baixo bomba
-      tiro.offsetTop + 6 >= nave_mae.offsetTop && //baixo tiro com cima bomba
-      tiro.offsetLeft <= nave_mae.offsetLeft + 70 && //esquerda tiro com direita bomba
-      tiro.offsetLeft + 6 >= nave_mae.offsetLeft //direita tiro com esquerda bomba
-    ) {
-      criaExplossao(nave_mae.offsetLeft - 25, nave_mae.offsetTop);
-      vidaNaveMae--;
-      quantidadeVidaNaveMae(vidaNaveMae);
-      tiro.remove();
-    }
+
+  if (
+    tiro.offsetTop <= nave_mae.offsetTop + 70 && //cima tiro com baixo bomba
+    tiro.offsetTop + 6 >= nave_mae.offsetTop && //baixo tiro com cima bomba
+    tiro.offsetLeft <= nave_mae.offsetLeft + 70 && //esquerda tiro com direita bomba
+    tiro.offsetLeft + 6 >= nave_mae.offsetLeft //direita tiro com esquerda bomba
+  ) {
+    criaExplossao(nave_mae.offsetLeft - 25, nave_mae.offsetTop);
+    vidaNaveMae--;
+    quantidadeVidaNaveMae(vidaNaveMae);
+    tiro.remove();
   }
 }
 
-function colisaoNaveBomba() {
-  var tam = bombasTotal.length;
+function colisaoNaveEts() {
+  var tam = EtsTotal.length;
   for (var i = 0; i < tam; i++) {
-    if (bombasTotal[i]) {
+    if (EtsTotal[i]) {
       if (
-        jog.offsetTop <= bombasTotal[i].offsetTop + 40 && //cima tiro com baixo bomba
-        jog.offsetTop + 55 >= bombasTotal[i].offsetTop && //baixo tiro com cima bomba
-        jog.offsetLeft <= bombasTotal[i].offsetLeft + 24 && //esquerda tiro com direita bomba
+        jog.offsetTop <= EtsTotal[i].offsetTop + 40 && //cima tiro com baixo bomba
+        jog.offsetTop + 55 >= EtsTotal[i].offsetTop && //baixo tiro com cima bomba
+        jog.offsetLeft <= EtsTotal[i].offsetLeft + 24 && //esquerda tiro com direita bomba
         //jog.offsetLeft <= bombasTotal[i].offsetLeft + 45 &&
-        jog.offsetLeft + 55 >= bombasTotal[i].offsetLeft //direita tiro com esquerda bomba
+        jog.offsetLeft + 55 >= EtsTotal[i].offsetLeft //direita tiro com esquerda bomba
       ) {
-        criaExplossao(bombasTotal[i].offsetLeft - 25, bombasTotal[i].offsetTop);
-        bombasTotal[i].remove();
+        criaExplossao(EtsTotal[i].offsetLeft - 25, EtsTotal[i].offsetTop);
+        EtsTotal[i].remove();
         vida--;
         quantidadeVida(vida);
       }
@@ -411,96 +432,66 @@ function criaExplossao(x, y) {
 
   ie++;
   isom++;
-  qtdBombas--;
-}
-
-function gerenciaGame() {
-  if (contBombas <= 0) {
-    jogo = false;
-    clearInterval(tmpCriaMonstros);
-    //telaMsg.style.backgroundImage = "url('../img/vitoria.jpg')";
-    //telaMsg.style.display = "block";
-  }
-  if (vidaPlaneta <= 0) {
-    jogo = false;
-    clearInterval(tmpCriaMonstros);
-
-    // telaMsg.style.display = "block";
-    //telaMsg.style.backgroundImage = "url('./img/derrota.jpg')";
-  }
+  qtdEts--;
 }
 
 function gameLoop() {
   if (jogo) {
-    //funcoes de controle
-    //controlaJogador();
     controleTiros();
-    verificaPassagemBomba();
-    colisaoNaveBomba();
-    controlaBomba();
-    //controlaNaveMae();
+    verificaPassagemEts();
+    colisaoNaveEts();
+    controlaEts();
   }
-  gerenciaGame();
   frames = requestAnimationFrame(gameLoop);
 }
 
 function reinicia() {
-  bombasTotal = document.getElementsByClassName("bomba");
-  var tam = bombasTotal.length;
+  EtsTotal = document.getElementsByClassName("bomba");
+  var tam = EtsTotal.length;
   for (var i = 0; i < tam; i++) {
-    if (bombasTotal[i]) {
-      bombasTotal[i].remove();
+    if (EtsTotal[i]) {
+      EtsTotal[i].remove();
     }
   }
   destroiNaveMae();
   criaNaveMae();
-  clearInterval(tmpCriaMonstros);
+  clearInterval(tmpCriaEts);
   clearInterval(tmpControlaNaveMae);
-  clearInterval(tmpcontrolaBomba);
+  clearInterval(tmpcontrolaEts);
   cancelAnimationFrame(frames);
-  vidaPlaneta = 300;
+  velocidadeNaveMae = 5;
   pjx = tamTelaW / 2;
   pjy = tamTelaH - 95;
   //jog.style.top = pjy + "px";
   //jog.style.left = pjx + "px";
-  contBombas = 150;
-  qtdBombas = 0;
+
   vida = 3;
   vidaNaveMae = 10;
-  qtdTiros = 0;
+
   jogo = true;
-  tmpCriaMonstros = setInterval(criaMonstros, 500);
+  tmpCriaEts = setInterval(criaEts, 500);
   tmpControlaNaveMae = setInterval(controlaNaveMae, 15);
-  tmpcontrolaBomba = setInterval(controlaBomba, 1000);
+  tmpcontrolaEts = setInterval(controlaEts, 1000);
 
   gameLoop();
 }
 
 function inicia() {
+  velocidadeNaveMae = 5;
   jogo = true;
-  //Ini tela
   tamTelaH = window.innerHeight;
   tamTelaW = window.innerWidth;
 
-  //Ini jogador
   dirxJ = 0;
   pjx = tamTelaW / 2;
 
   velJ = velT = 5;
   jog = document.getElementById("barraVida");
 
-  //jog.style.top = pjy + "px";
-  // jog.style.left = "50%";
-
-  //controle de bombas
-  qtdBombas = 0;
+  qtdEts = 0;
   qtdTiros = 0;
-  contBombas = 150;
+  contEts = 150;
   velB = 3;
-
-  //controles do planeta
-
-  //controle explsao
   ie = 0;
   isom = 0;
   vida = 3;
@@ -509,17 +500,23 @@ function inicia() {
   telaMsg = document.getElementById("telaMsg");
 
   reinicia();
-  //telaMsg.style.display = "block";
-  //document.getElementById("btnJogar").addEventListener("click", reinicia);
-}
-
-function conflito() {
-  alert(tamanho_nave_mae.bottom);
 }
 
 window.addEventListener("load", () => {
   window.scrollTo(0, document.body.scrollHeight);
 });
+
+document.getElementById("btn-esquerda").onclick = () => {
+  teclaDwMobile(37);
+};
+
+document.getElementById("btn-direita").onclick = () => {
+  teclaDwMobile(39);
+};
+
+document.getElementById("btn-tiro").onclick = () => {
+  teclaUpMobile(65);
+};
 
 document.addEventListener("keydown", teclaDw);
 
@@ -538,7 +535,16 @@ window.addEventListener("scroll", function () {
       inicia();
     }
   } else {
-    apagarMonstros();
+    apagarEts();
     destroiNaveMae();
   }
 });
+
+document.addEventListener("visibilitychange", function() {
+  if (document.hidden) {
+    console.log("A guia não está visível");
+  } else {
+    console.log("A guia está visível");
+  }
+});
+
