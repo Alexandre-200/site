@@ -23,13 +23,8 @@ a {
   justify-content: center;
   width: 100vw;
   height: 270vh;
+  max-height: 2500px;
 }
-@media (max-width: 800px) {
-  .body-game {
-    height: 280vh;
-  }
-}
-
 .telaMsg {
   display: flex;
   justify-content: center;
@@ -317,14 +312,32 @@ input[type=checkbox] {
   display: flex;
   padding: 5px;
 }
-.habilidades .icones .html, .habilidades .icones .css, .habilidades .icones .sass, .habilidades .icones .javascript {
+.habilidades .icones .html,
+.habilidades .icones .css,
+.habilidades .icones .sass,
+.habilidades .icones .javascript,
+.habilidades .icones .react {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 15px;
+  margin: 7px;
+}
+.habilidades .icones p {
+  font-size: 18px;
+}
+@media (max-width: 800px) {
+  .habilidades .icones p {
+    font-size: 12px;
+  }
 }
 .habilidades .icones i {
   font-size: 45px;
+  cursor: default;
+}
+@media (max-width: 800px) {
+  .habilidades .icones i {
+    font-size: 35px;
+  }
 }
 
 .react {

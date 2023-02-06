@@ -234,21 +234,37 @@ input[type="checkbox"] {
   }
 }
 
-.habilidades{
-  .icones{
+.habilidades {
+  .icones {
     display: flex;
 
     padding: 5px;
-    .html, .css, .sass, .javascript{
+    .html,
+    .css,
+    .sass,
+    .javascript,
+    .react {
       display: flex;
       align-items: center;
       flex-direction: column;
-      padding: 15px;
-      
+      margin: 7px;
+    }
+
+    p {
+      font-size: 18px;
+
+      @include  mobile{
+        font-size: 12px;
+      }
     }
 
     i {
       font-size: 45px;
+      cursor: default;
+
+      @include  mobile{
+        font-size: 35px;
+      }
     }
   }
 }
@@ -264,14 +280,13 @@ input[type="checkbox"] {
   .quadro-2 {
     @include quadro-exemplos("marioGame");
   }
-  
+
   .quadro-1,
   .quadro-2 {
     @include mobile {
       @include quadro-exemplos-mobile();
     }
   }
-
 }
 
 .hcj {
@@ -280,13 +295,12 @@ input[type="checkbox"] {
   @include params-quadros;
 
   @include mobile {
- 
     .ttl-quadro {
       order: 3;
     }
     .quadro-3 {
       order: 2;
-     // margin-top: 10px;
+      // margin-top: 10px;
     }
   }
 
@@ -327,8 +341,6 @@ input[type="checkbox"] {
       @include quadro-inf-mobile;
     }
   }
-
- 
 }
 
 .dark {

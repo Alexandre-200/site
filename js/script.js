@@ -356,17 +356,18 @@ function colisaoTiroEts(tiro) {
 
 function colisaoTiroNaveMae(tiro) {
   nave_mae = document.getElementById("qtd-vidas-nave");
-
-  if (
-    tiro.offsetTop <= nave_mae.offsetTop + 70 && //cima tiro com baixo bomba
-    tiro.offsetTop + 6 >= nave_mae.offsetTop && //baixo tiro com cima bomba
-    tiro.offsetLeft <= nave_mae.offsetLeft + 70 && //esquerda tiro com direita bomba
-    tiro.offsetLeft + 6 >= nave_mae.offsetLeft //direita tiro com esquerda bomba
-  ) {
-    criaExplossao(nave_mae.offsetLeft - 25, nave_mae.offsetTop);
-    vidaNaveMae--;
-    quantidadeVidaNaveMae(vidaNaveMae);
-    tiro.remove();
+  if (nave_mae.offsetTop != undefined) {
+    if (
+      tiro.offsetTop <= nave_mae.offsetTop + 70 && //cima tiro com baixo bomba
+      tiro.offsetTop + 6 >= nave_mae.offsetTop && //baixo tiro com cima bomba
+      tiro.offsetLeft <= nave_mae.offsetLeft + 70 && //esquerda tiro com direita bomba
+      tiro.offsetLeft + 6 >= nave_mae.offsetLeft //direita tiro com esquerda bomba
+    ) {
+      criaExplossao(nave_mae.offsetLeft - 25, nave_mae.offsetTop);
+      vidaNaveMae--;
+      quantidadeVidaNaveMae(vidaNaveMae);
+      tiro.remove();
+    }
   }
 }
 
@@ -540,11 +541,10 @@ window.addEventListener("scroll", function () {
   }
 });
 
-document.addEventListener("visibilitychange", function() {
+document.addEventListener("visibilitychange", function () {
   if (document.hidden) {
     console.log("A guia não está visível");
   } else {
     console.log("A guia está visível");
   }
 });
-

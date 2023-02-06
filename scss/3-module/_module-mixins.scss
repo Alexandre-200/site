@@ -89,6 +89,17 @@
   min-width: 220px;
 }
 
+@mixin icones {
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  
+  cursor: pointer;
+  transition: 0.8s;
+}
+
 @mixin quadro-inf-mobile {
   width: 220px;
   height: 300px;

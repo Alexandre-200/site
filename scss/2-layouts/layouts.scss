@@ -8,8 +8,10 @@
   width: 100vw;
   height: 270vh;
 
+  max-height: 2500px;
+
   @include mobile{
-    height: 280vh;
+    //height: 280vh;
   }
 }
 

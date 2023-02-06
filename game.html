@@ -18,12 +18,9 @@
   <body class="body-game">
     <main class="main">
       <div class="arena">
-
         <div id="qtd-vidas-nave" class="qtd-vidas-nave">
-          
           <label id="qtdVidas-nave">10</label>
         </div>
-       
       </div>
       <div class="separar">
         <p>Destrua a nave mae</p>
@@ -33,28 +30,29 @@
         <div class="icones">
           <div class="html">
             <p>HTML5</p>
-            <i class='bx bxl-html5'></i>
+            <i class="bx bxl-html5"></i>
           </div>
           <div class="css">
             <p>CSS3</p>
-            <i class='bx bxl-css3' ></i>
+            <i class="bx bxl-css3"></i>
           </div>
           <div class="sass">
             <p>SASS</p>
-            <i class='bx bxl-sass' ></i>
+            <i class="bx bxl-sass"></i>
           </div>
           <div class="javascript">
             <p>JavaScript</p>
-            <i class='bx bxl-javascript'></i>
+            <i class="bx bxl-javascript"></i>
+          </div>
+          <div class="react">
+            <p>React</p>
+            <i class="bx bxl-react"></i>
           </div>
         </div>
-        
       </div>
       <div class="informacoes">
         <div class="quadros-titulos">
-          <text >
-            Habilidades   
-          </text>
+          <text> Habilidades </text>
         </div>
         <div class="react">
           <div class="quadro-1">
@@ -113,8 +111,6 @@
             </div>
           </div>
 
-          
-
           <div class="quadro-4">
             <div class="container-quadro">
               <div class="img"></div>
@@ -138,8 +134,8 @@
         </div>
 
         <div class="quadros-titulos">
-          <text >
-            Alguns dos projetos que me ajudaram a criar este portfólio.   
+          <text>
+            Alguns dos projetos que me ajudaram a criar este portfólio.
           </text>
         </div>
 
@@ -150,7 +146,7 @@
               socioeducador
             </p>
           </div>
-         
+
           <div class="quadro-6">
             <p class="parag">
               Atualmente estou no meu sexto e ultimo semestre do curso de
@@ -161,69 +157,62 @@
         </div>
 
         <div class="quadros-titulos">
-          <text >
-            Quem sou eu?  
-          </text>
+          <text> Quem sou eu? </text>
         </div>
-
       </div>
 
-
-    <div class="btn-flutuante">
-      <div class="menu_content">
-        <div
-          class="item floating_item"
-          style="background-color: #0081cf; z-index: 1; rotate: 45deg"
-        >
-          <i class="bx bx-x"></i>
-        </div>
-        <div class="options">
-          <div class="item" style="background-color: #6e5494">
-            <a
-              target="_blank"
-              href="https://github.com/Alexandre-200"
-              class="link_git"
-            >
-              <i class="bx bxl-github"> </i
-            ></a>
+      <div class="btn-flutuante">
+        <div class="menu_content">
+          <div
+            class="item floating_item"
+            style="background-color: #0081cf; z-index: 1; rotate: 45deg"
+          >
+            <i class="bx bx-x"></i>
           </div>
-          <div class="item" style="background-color: #0081cf">
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/in/carlos-alexandre-3a41b6264/"
-              class="link_link"
-            >
-              <i class="bx bxl-linkedin"></i>
-            </a>
+          <div class="options">
+            <div class="item" style="background-color: #6e5494">
+              <a
+                target="_blank"
+                href="https://github.com/Alexandre-200"
+                class="link_git"
+              >
+                <i class="bx bxl-github"> </i
+              ></a>
+            </div>
+            <div class="item" style="background-color: #0081cf">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/carlos-alexandre-3a41b6264/"
+                class="link_link"
+              >
+                <i class="bx bxl-linkedin"></i>
+              </a>
+            </div>
           </div>
         </div>
+        <div class="theme">
+          <input type="checkbox" name="change-theme" id="change-theme" />
+          <label for="change-theme">
+            <i class="bx bx-sun"></i>
+            <i class="bx bx-moon"></i>
+          </label>
+        </div>
       </div>
-      <div class="theme">
-        <input type="checkbox" name="change-theme" id="change-theme" />
-        <label for="change-theme">
-          <i class='bx bx-sun' ></i>
-          <i class='bx bx-moon'></i>
-        </label>
-      </div>
-    </div>
-
     </main>
     <footer id="footer">
       <div id="footerContainer">
-        <i class='bx bxs-left-arrow' id="btn-esquerda"></i>
-        <i class='bx bxs-right-arrow' id="btn-direita"></i>
-       <!-- <i class='bx bxs-up-arrow' id="btn-cima"></i>-->
-        <i class='bx bxs-chevrons-up' id="btn-tiro"></i>
-          <!-- <i class='bx bxs-down-arrow' id="btn-baixo"></i>-->
-         
+        <i class="bx bxs-left-arrow" id="btn-esquerda"></i>
+        <i class="bx bxs-right-arrow" id="btn-direita"></i>
+        <!-- <i class='bx bxs-up-arrow' id="btn-cima"></i>-->
+        <i class="bx bxs-chevrons-up" id="btn-tiro"></i>
+        <!-- <i class='bx bxs-down-arrow' id="btn-baixo"></i>-->
       </div>
-
     </footer>
     <div id="barraVida">
       <div id="navJog" class="navJog"></div>
       <label id="qtdVidas">3</label>
     </div>
-   
+
     <script>
       const menu = document.querySelector(".floating_item");
       menu.onclick = () => menu.classList.toggle("active");
