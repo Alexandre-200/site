@@ -202,7 +202,9 @@ a {
   position: absolute;
 }
 
-#btn-esquerda, #btn-direita, #btn-tiro {
+#btn-esquerda,
+#btn-direita,
+#btn-tiro {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,7 +212,9 @@ a {
   background-color: white;
   border-radius: 5px;
 }
-#btn-esquerda:hover, #btn-direita:hover, #btn-tiro:hover {
+#btn-esquerda:hover,
+#btn-direita:hover,
+#btn-tiro:hover {
   opacity: 0.8;
 }
 
@@ -230,6 +234,11 @@ a {
   position: relative;
   color: gray;
   left: 45px;
+}
+@media (max-device-width: 800px), (max-width: 800px) {
+  #barraVida #qtdVidas {
+    top: -55px;
+  }
 }
 
 .body-game .bx-moon {
@@ -697,7 +706,9 @@ input[type=checkbox] {
   background-color: white;
   color: rgb(93, 93, 93);
 }
-.dark #btn-esquerda, .dark #btn-direita, .dark #btn-tiro {
+.dark #btn-esquerda,
+.dark #btn-direita,
+.dark #btn-tiro {
   color: black;
 }
 .dark .bx-moon {

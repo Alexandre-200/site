@@ -543,8 +543,8 @@ window.addEventListener("scroll", function () {
 
 document.addEventListener("visibilitychange", function () {
   if (document.hidden) {
-    console.log("A guia não está visível");
+    jogo = false;
   } else {
-    console.log("A guia está visível");
+    jogo = true;
   }
 });
