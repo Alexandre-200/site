@@ -8,10 +8,11 @@
   width: 100vw;
   height: 270vh;
 
-  max-height: 2500px;
+  max-height: 3900px;
 
   @include mobile{
-    //height: 280vh;
+    height: 400vh;
+    max-height: 4400px;
   }
 }
 
@@ -33,10 +34,6 @@
   background-color: red;
   z-index: 1;
   bottom: 0px;
-
-  
-
-  
 
   .footerContainer {
     display: flex;

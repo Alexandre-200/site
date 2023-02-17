@@ -23,8 +23,15 @@ a {
   justify-content: center;
   width: 100vw;
   height: 270vh;
-  max-height: 2500px;
+  max-height: 3900px;
 }
+@media (max-device-width: 800px), (max-width: 800px) {
+  .body-game {
+    height: 400vh;
+    max-height: 4400px;
+  }
+}
+
 .telaMsg {
   display: flex;
   justify-content: center;
@@ -193,6 +200,18 @@ a {
   width: 70px;
   height: 70px;
   position: absolute;
+}
+
+#btn-esquerda, #btn-direita, #btn-tiro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+#btn-esquerda:hover, #btn-direita:hover, #btn-tiro:hover {
+  opacity: 0.8;
 }
 
 #barraVida {
@@ -620,6 +639,9 @@ input[type=checkbox] {
   .sobre {
     flex-direction: column;
   }
+  .sobre .quadro-5 {
+    order: 1;
+  }
 }
 .sobre .quadro-5,
 .sobre .quadro-6 {
@@ -674,6 +696,9 @@ input[type=checkbox] {
 .dark .quadro-6 .container-quadro .link a:hover {
   background-color: white;
   color: rgb(93, 93, 93);
+}
+.dark #btn-esquerda, .dark #btn-direita, .dark #btn-tiro {
+  color: black;
 }
 .dark .bx-moon {
   display: none;
