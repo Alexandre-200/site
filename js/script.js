@@ -400,36 +400,36 @@ function criaExplossao(x, y) {
 
   var explosao = document.createElement("div");
   var img = document.createElement("img");
-  var som = document.createElement("audio");
+  //var som = document.createElement("audio");
 
   var att1 = document.createAttribute("class");
   var att2 = document.createAttribute("style");
   var att3 = document.createAttribute("id");
 
   var att4 = document.createAttribute("src");
-  var att5 = document.createAttribute("src");
-  var att6 = document.createAttribute("id");
+  //var att5 = document.createAttribute("src");
+ // var att6 = document.createAttribute("id");
 
   att1.value = "explosaoAr";
   att2.value = "top:" + y + "px;left:" + x + "px;";
   att3.value = "explosao" + ie;
   att4.value = "../img/explosao_ar.gif?" + new Date();
 
-  att5.value = "../img/exp1.mp3?" + new Date();
-  att6.value = "som" + isom;
+  //att5.value = "../img/exp1.mp3?" + new Date();
+  //att6.value = "som" + isom;
 
   explosao.setAttributeNode(att1);
   explosao.setAttributeNode(att2);
   explosao.setAttributeNode(att3);
 
   img.setAttributeNode(att4);
-  som.setAttributeNode(att5);
-  som.setAttributeNode(att6);
+  //som.setAttributeNode(att5);
+  //som.setAttributeNode(att6);
   explosao.appendChild(img);
-  explosao.appendChild(som);
+  //explosao.appendChild(som);
 
   document.body.appendChild(explosao);
-  document.getElementById("som" + isom).play();
+  //document.getElementById("som" + isom).play();
 
   ie++;
   isom++;

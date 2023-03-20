@@ -241,36 +241,64 @@ a {
   }
 }
 
-.body-game .bx-moon {
-  display: block;
-}
-.body-game .bx-sun {
-  display: none;
-}
-
 input[type=checkbox] {
   display: none;
 }
 
 .bx {
   font-size: 1.9rem;
-  cursor: pointer;
 }
 
-.bx-moon {
+.lua {
+  width: 45px;
   background-color: gray;
   color: white;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   padding: 8px;
+  gap: 10px;
+  transition: 0.3s;
+}
+.lua:hover {
+  width: 100px;
+  border-radius: 50px;
+  transform: translate(-3.5rem, 0rem);
+  cursor: pointer;
+}
+.lua:hover text {
+  font-size: 12px;
+  display: block;
+}
+.lua text {
+  font-size: 0px;
+  display: none;
 }
 
-.bx-sun {
+.sol {
+  width: 45px;
   background-color: rgb(113, 215, 240);
   display: none;
   border-radius: 50%;
   padding: 8px;
   color: yellow;
+  transition: 0.3s;
+  gap: 10px;
+}
+.sol:hover {
+  cursor: pointer;
+  border-radius: 50px;
+  transform: translate(-4.5rem, 0rem);
+  width: 120px;
+}
+.sol:hover text {
+  transition: font-size 1s;
+  display: block;
+}
+.sol text {
+  font-size: 12px;
+  display: none;
 }
 
 .btn-flutuante {
@@ -711,11 +739,15 @@ input[type=checkbox] {
 .dark #btn-tiro {
   color: black;
 }
-.dark .bx-moon {
+.dark .lua {
   display: none;
 }
-.dark .bx-sun {
-  display: block;
+.dark .sol {
+  display: flex;
+  align-items: center;
+}
+.dark #barraVida #qtdVidas {
+  color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */
