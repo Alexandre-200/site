@@ -338,17 +338,20 @@ function controleTiros() {
 
 function colisaoTiroEts(tiro) {
   var tam = EtsTotal.length;
+  // console.log("tiro "+tiro.offsetTop);
   for (var i = 0; i < tam; i++) {
     if (EtsTotal[i]) {
-      if (
-        tiro.offsetTop <= EtsTotal[i].offsetTop + 40 && //cima tiro com baixo bomba
-        tiro.offsetTop + 6 >= EtsTotal[i].offsetTop && //baixo tiro com cima bomba
-        tiro.offsetLeft <= EtsTotal[i].offsetLeft + 24 && //esquerda tiro com direita bomba
-        tiro.offsetLeft + 6 >= EtsTotal[i].offsetLeft //direita tiro com esquerda bomba
-      ) {
-        criaExplossao(EtsTotal[i].offsetLeft - 25, EtsTotal[i].offsetTop);
-        EtsTotal[i].remove();
-        tiro.remove();
+      if (tiro.offsetTop) {
+        if (
+          tiro.offsetTop <= EtsTotal[i].offsetTop + 40 && //cima tiro com baixo bomba
+          tiro.offsetTop + 6 >= EtsTotal[i].offsetTop && //baixo tiro com cima bomba
+          tiro.offsetLeft <= EtsTotal[i].offsetLeft + 24 && //esquerda tiro com direita bomba
+          tiro.offsetLeft + 6 >= EtsTotal[i].offsetLeft //direita tiro com esquerda bomba
+        ) {
+          criaExplossao(EtsTotal[i].offsetLeft - 25, EtsTotal[i].offsetTop);
+          EtsTotal[i].remove();
+          tiro.remove();
+        }
       }
     }
   }
@@ -356,6 +359,7 @@ function colisaoTiroEts(tiro) {
 
 function colisaoTiroNaveMae(tiro) {
   nave_mae = document.getElementById("qtd-vidas-nave");
+  // console.log("nave-mae "+nave_mae.offsetTop);
   if (nave_mae.offsetTop != undefined) {
     if (
       tiro.offsetTop <= nave_mae.offsetTop + 70 && //cima tiro com baixo bomba
@@ -408,7 +412,7 @@ function criaExplossao(x, y) {
 
   var att4 = document.createAttribute("src");
   //var att5 = document.createAttribute("src");
- // var att6 = document.createAttribute("id");
+  // var att6 = document.createAttribute("id");
 
   att1.value = "explosaoAr";
   att2.value = "top:" + y + "px;left:" + x + "px;";
