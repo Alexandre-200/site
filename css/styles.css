@@ -259,7 +259,6 @@ input[type=checkbox] {
   border-radius: 50%;
   padding: 8px;
   gap: 10px;
-  transition: 0.3s;
 }
 .lua:hover {
   width: 100px;
@@ -283,7 +282,6 @@ input[type=checkbox] {
   border-radius: 50%;
   padding: 8px;
   color: yellow;
-  transition: 0.3s;
   gap: 10px;
 }
 .sol:hover {
@@ -293,11 +291,11 @@ input[type=checkbox] {
   width: 120px;
 }
 .sol:hover text {
-  transition: font-size 1s;
+  font-size: 12px;
   display: block;
 }
 .sol text {
-  font-size: 12px;
+  font-size: 1px;
   display: none;
 }
 
