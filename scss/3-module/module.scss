@@ -151,7 +151,7 @@
   width: 40px;
   height: 40px;
   position: fixed;
-  bottom: 60px;
+  bottom: 80px;
 
   left: 51%;
 
@@ -242,11 +242,11 @@ input[type="checkbox"] {
 .btn-flutuante {
   position: fixed;
   left: 93%;
-  bottom: 5%;
+  bottom: 10%;
 
   @include mobile {
     left: 87%;
-    bottom: 7%;
+    bottom: 10%;
   }
 }
 
