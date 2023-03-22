@@ -14,19 +14,21 @@
       referrerpolicy="no-referrer"
     />
 
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
     <title>Portfolio</title>
   </head>
   <body>
     <div>
       <div id="telaMsg" class="telaMsg">
-        <img class="imagem" src="" />
+        <img class="imagem" src="./img/img.jpg" />
         <div class="paragrafo">
-          <p>
-            Bem-vindo ao meu portfólio, utilize as setas abaixo para jogar
-            após acessar
-          </p>
+          <p>Bem-vindo ao meu portfólio, utilize as setas abaixo para jogar.</p>
         </div>
-        <div class="jogo">
+        <div class="desktop">
           <div>
             <i class="fa-solid fa-arrow-left"></i><text> esquerda</text>
           </div>
@@ -35,9 +37,29 @@
           </div>
           <div><i class="fa-solid fa-arrow-up"></i><text> subir</text></div>
           <div>A<text> tiro</text></div>
-
-          <a id="btnJogar" class="btnJogo" href="/game.html">Acessar</a>
         </div>
+
+        <!-- 
+<i class="bx bxs-left-arrow" id="btn-esquerda"></i>
+        <i class="bx bxs-right-arrow" id="btn-direita"></i>
+        <i class='bx bxs-up-arrow' id="btn-cima"></i>
+        <i class="bx bxs-chevrons-up" id="btn-tiro"></i>
+
+         -->
+        <div class="mobile">
+          <div>
+            <i class="bx bxs-left-arrow" id="btn-esquerda"></i
+            ><text> esquerda</text>
+          </div>
+          <div>
+            <i class="bx bxs-right-arrow" id="btn-direita"></i
+            ><text> direita</text>
+          </div>
+          <div>
+            <i class="bx bxs-chevrons-up" id="btn-tiro"></i><text> tiro</text>
+          </div>
+        </div>
+        <a id="btnJogar" class="btnJogo" href="/game.html">Acessar</a>
       </div>
     </div>
   </body>

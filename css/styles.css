@@ -121,7 +121,7 @@ a {
   text-align: center;
 }
 
-.jogo {
+.desktop {
   margin-top: 10px;
   display: flex;
   justify-content: center;
@@ -130,13 +130,19 @@ a {
   flex-direction: column;
   width: 100%;
 }
-.jogo div {
+.desktop div {
   margin-bottom: 10px;
 }
-.jogo div text {
+.desktop div text {
   padding-left: 10px;
 }
-.jogo #btnJogar {
+@media (max-device-width: 800px), (max-width: 800px) {
+  .desktop {
+    display: none;
+  }
+}
+
+#btnJogar {
   margin-top: 10px;
   padding: 10px;
   border: none;
@@ -149,11 +155,36 @@ a {
   color: rgb(161, 211, 245);
   transition: 0.5s;
 }
-.jogo #btnJogar:hover {
+#btnJogar:hover {
   cursor: pointer;
   color: #000;
   background-color: transparent;
   border: 1px solid #000;
+}
+
+.mobile {
+  margin-top: 10px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  flex-direction: column;
+  width: 100%;
+}
+.mobile div {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.mobile div text {
+  padding-left: 10px;
+}
+@media (max-device-width: 800px), (max-width: 800px) {
+  .mobile {
+    display: block;
+  }
 }
 
 .naveInimiga {
@@ -211,6 +242,7 @@ a {
   padding: 5px;
   background-color: white;
   border-radius: 5px;
+  cursor: pointer;
 }
 #btn-esquerda:hover,
 #btn-direita:hover,
