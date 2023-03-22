@@ -165,10 +165,7 @@ a {
 .mobile {
   margin-top: 10px;
   display: none;
-  justify-content: center;
-  align-items: center;
   padding: 10px;
-  flex-direction: column;
   width: 100%;
 }
 .mobile div {
@@ -712,6 +709,8 @@ input[type=checkbox] {
 }
 .sobre .quadro-5,
 .sobre .quadro-6 {
+  display: flex;
+  align-items: center;
   width: 300px;
   height: 350px;
   border: 3px solid black;
