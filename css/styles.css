@@ -490,6 +490,11 @@ input[type=checkbox] {
   text-align: center;
   padding: 5px;
 }
+@media (max-device-width: 800px), (max-width: 800px) {
+  .react .quadro-1 {
+    width: 70vw;
+  }
+}
 .react .quadro-2 {
   width: 300px;
   height: 350px;
@@ -544,6 +549,11 @@ input[type=checkbox] {
 .react .quadro-2 .paragrafo-quadro text {
   text-align: center;
   padding: 5px;
+}
+@media (max-device-width: 800px), (max-width: 800px) {
+  .react .quadro-2 {
+    width: 70vw;
+  }
 }
 @media (max-device-width: 800px), (max-width: 800px) {
   .react .quadro-1,
@@ -620,6 +630,11 @@ input[type=checkbox] {
   text-align: center;
   padding: 5px;
 }
+@media (max-device-width: 800px), (max-width: 800px) {
+  .hcj .quadro-3 {
+    width: 70vw;
+  }
+}
 .hcj .ttl-quadro {
   width: 300px;
   height: 50px;
@@ -683,6 +698,11 @@ input[type=checkbox] {
 .hcj .quadro-4 .paragrafo-quadro text {
   text-align: center;
   padding: 5px;
+}
+@media (max-device-width: 800px), (max-width: 800px) {
+  .hcj .quadro-4 {
+    width: 70vw;
+  }
 }
 @media (max-device-width: 800px), (max-width: 800px) {
   .hcj .quadro-3,

@@ -61,6 +61,10 @@
       padding: 5px;
     }
   }
+
+  @include mobile{
+    width: 70vw;
+  }
 }
 
 @mixin quadro-exemplos-mobile() {
